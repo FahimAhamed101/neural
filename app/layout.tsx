@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 import "./reference.css";
+import "./blog.css";
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
@@ -129,17 +129,21 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <Script
+      <head>
+        <script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-8QEP5HDLEJ"
-          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-8QEP5HDLEJ');`}
-        </Script>
+gtag('config', 'G-8QEP5HDLEJ');`,
+          }}
+        />
+      </head>
+      <body>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

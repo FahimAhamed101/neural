@@ -74,5 +74,39 @@ The chat link is built as:
 https://wa.me/<countrycode><number>?text=<url-encoded message>
 ```
 
+## Automated SEO content worker
+
+The blog automation uses the local OpenAI-compatible endpoint at
+`http://127.0.0.1:8000/v1/chat/completions` and the `deepseek-expert` model.
+
+```bash
+# Generate a due daily cycle once
+npm run content:once
+
+# Fill missing publishable posts in the current cycle
+npm run content:fill
+
+# Run the API monitor and scheduler continuously
+npm run content:worker
+
+# Production: run Next.js and the worker together
+npm run start:content
+```
+
+The worker checks the API every minute. It prints `API not online yet` when the
+endpoint is unavailable, keeps its schedule in `data/content-worker-state.json`,
+and resumes due work when the API returns. It generates six targeted articles
+per daily cycle. Evergreen articles expire after 7 days; the single daily
+industry update expires after 90 days. Expired URLs are removed from the live
+blog and sitemap automatically.
+
+Generated content is stored in `data/generated-posts.json`. Articles that fail
+length, metadata, structure, duplication, or unsupported-claim checks remain
+drafts and are excluded from routes and the sitemap. Blog routes are rendered
+dynamically so a persistent Node/VPS deployment sees worker updates without a
+rebuild. Serverless deployments such as Vercel cannot reach a machine-local
+`127.0.0.1` API or persist JSON writes; use a persistent server or replace the
+file store and API URL with network-accessible services.
+
 `lib/site-config.ts`'s `getWhatsAppLink()` helper does the encoding for you —
 you never need to build this URL by hand elsewhere in the app.

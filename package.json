@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "start:content": "node scripts/start-with-content-worker.mjs",
+    "lint": "next lint",
+    "content:once": "node scripts/content-worker.mjs --once",
+    "content:fill": "node scripts/content-worker.mjs --once --fill",
+    "content:worker": "node scripts/content-worker.mjs"
   },
   "dependencies": {
     "next": "^14.2.5",
