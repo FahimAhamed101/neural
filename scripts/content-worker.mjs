@@ -1,8 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import process from "node:process";
 
 const root = process.cwd();
+const envPath = path.join(root, ".env");
+if (fs.existsSync(envPath)) process.loadEnvFile(envPath);
 const postsPath = path.join(root, "data", "generated-posts.json");
 const statePath = path.join(root, "data", "content-worker-state.json");
 const apiUrl = process.env.CONTENT_API_URL || "http://127.0.0.1:8000/v1/chat/completions";
@@ -11,6 +14,16 @@ const pollMs = Math.max(15000, Number(process.env.CONTENT_POLL_MS || 60000));
 const dailyMs = 24 * 60 * 60 * 1000;
 const once = process.argv.includes("--once");
 const fill = process.argv.includes("--fill");
+const healthOnly = process.argv.includes("--health");
+
+function displayApiUrl(value) {
+  try {
+    const parsed = new URL(value);
+    return `${parsed.protocol}//${parsed.host}${parsed.pathname}`;
+  } catch {
+    return "configured content API";
+  }
+}
 
 const topicSeeds = [
   "AI automation for small and medium businesses",
@@ -233,7 +246,7 @@ async function fillRecentPublishedPosts(since = Date.now() - dailyMs) {
 
 async function tick() {
   cleanup();
-  log(`Checking content API: ${apiUrl}`);
+  log(`Checking content API: ${displayApiUrl(apiUrl)}`);
   const apiStatus = await apiOnline();
   const state = readJson(statePath, {});
   state.apiStatus = {
@@ -245,6 +258,10 @@ async function tick() {
   writeJson(statePath, state);
   if (!apiStatus.online) {
     log(`API OFFLINE — ${apiStatus.detail}`);
+    return;
+  }
+  if (healthOnly) {
+    log(`API ONLINE — ${apiStatus.detail}. Health-only check complete.`);
     return;
   }
   log(`API ONLINE — ${apiStatus.detail}. Calculating saved schedule and continuing due work.`);
@@ -261,7 +278,7 @@ async function tick() {
 
 async function main() {
   await tick();
-  if (once) return;
+  if (once || healthOnly) return;
   log(`Worker active. Checking API and schedule every ${Math.round(pollMs / 1000)} seconds.`);
   setInterval(() => tick().catch((error) => log(`Worker error: ${error.message}`)), pollMs);
 }

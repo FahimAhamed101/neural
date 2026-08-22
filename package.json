@@ -11,6 +11,7 @@
     "start:content": "node scripts/start-with-content-worker.mjs start",
     "lint": "next lint",
     "content:once": "node scripts/content-worker.mjs --once",
+    "content:health": "node scripts/content-worker.mjs --health",
     "content:fill": "node scripts/content-worker.mjs --once --fill",
     "content:worker": "node scripts/content-worker.mjs"
   },
