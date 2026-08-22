@@ -9,6 +9,9 @@ import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
+import Insights from "@/components/Insights";
+
+export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
@@ -22,6 +25,7 @@ export default function HomePage() {
         <Team />
         <Process />
         <Testimonials />
+        <Insights />
         <ContactCta />
       </main>
       <Footer />

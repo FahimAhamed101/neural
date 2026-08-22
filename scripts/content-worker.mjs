@@ -11,7 +11,6 @@ const pollMs = Math.max(15000, Number(process.env.CONTENT_POLL_MS || 60000));
 const dailyMs = 24 * 60 * 60 * 1000;
 const once = process.argv.includes("--once");
 const fill = process.argv.includes("--fill");
-let lastApiStatus;
 
 const topicSeeds = [
   "AI automation for small and medium businesses",
@@ -60,9 +59,9 @@ async function completion(messages, options = {}) {
 async function apiOnline() {
   try {
     const answer = await completion([{ role: "user", content: "Reply with only OK" }], { temperature: 0, maxTokens: 10 });
-    return Boolean(answer);
-  } catch {
-    return false;
+    return { online: Boolean(answer), detail: answer ? "health check succeeded" : "empty health-check response" };
+  } catch (error) {
+    return { online: false, detail: error instanceof Error ? error.message : String(error) };
   }
 }
 
@@ -234,14 +233,13 @@ async function fillRecentPublishedPosts(since = Date.now() - dailyMs) {
 
 async function tick() {
   cleanup();
-  const online = await apiOnline();
-  if (!online) {
-    if (lastApiStatus !== false || once) log("API not online yet");
-    lastApiStatus = false;
+  log(`Checking content API: ${apiUrl}`);
+  const apiStatus = await apiOnline();
+  if (!apiStatus.online) {
+    log(`API OFFLINE — ${apiStatus.detail}`);
     return;
   }
-  if (lastApiStatus !== true) log("API online. Calculating saved schedule and continuing due work.");
-  lastApiStatus = true;
+  log(`API ONLINE — ${apiStatus.detail}. Calculating saved schedule and continuing due work.`);
   if (fill) {
     log("Filling the current content cycle.");
     await fillRecentPublishedPosts();
