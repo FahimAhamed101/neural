@@ -2,11 +2,13 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { getPublishedPosts } from "@/lib/posts";
 import { servicePages } from "@/lib/services";
+import { getProjectSlug, getProjects } from "@/lib/projects";
 
 export const dynamic = "force-dynamic";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getPublishedPosts();
+  const projects = await getProjects();
   return [
     {
       url: siteConfig.url,
@@ -25,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(siteConfig.lastModified),
       changeFrequency: "monthly" as const,
       priority: 0.9,
+    })),
+    ...projects.filter((project) => project.images).map((project) => ({
+      url: `${siteConfig.url}/projects/${getProjectSlug(project)}`,
+      lastModified: new Date(siteConfig.lastModified),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     ...posts.map((post) => ({
       url: `${siteConfig.url}/blog/${post.slug}`,

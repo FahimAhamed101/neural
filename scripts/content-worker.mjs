@@ -235,6 +235,14 @@ async function tick() {
   cleanup();
   log(`Checking content API: ${apiUrl}`);
   const apiStatus = await apiOnline();
+  const state = readJson(statePath, {});
+  state.apiStatus = {
+    online: apiStatus.online,
+    detail: apiStatus.detail,
+    checkedAt: new Date().toISOString(),
+    pollIntervalMs: pollMs,
+  };
+  writeJson(statePath, state);
   if (!apiStatus.online) {
     log(`API OFFLINE — ${apiStatus.detail}`);
     return;
@@ -245,7 +253,6 @@ async function tick() {
     await fillRecentPublishedPosts();
     return;
   }
-  const state = readJson(statePath, {});
   const due = !state.nextDailyRun || new Date(state.nextDailyRun).getTime() <= Date.now();
   if (!due && once) { log(`Not due yet. Next run: ${state.nextDailyRun}`); return; }
   if (!due) return;

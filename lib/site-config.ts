@@ -8,10 +8,10 @@ export const siteConfig = {
   whatsappNumber: "8801706617723",
   whatsappDefaultMessage: "Hi I need a website or mobile app.",
   fiverrUrl: "https://www.fiverr.com/stark420?public_mode=true",
-  githubUrl: "https://github.com/FahimAhamed101",
   email: "fahimahamedweb@gmail.com",
   locale: "en_US",
   themeColor: "#F7F8FA",
+  googleAnalyticsId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "G-BNF8CJG38R",
 };
 
 export function getWhatsAppLink(message?: string) {

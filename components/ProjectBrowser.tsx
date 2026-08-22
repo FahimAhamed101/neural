@@ -63,7 +63,6 @@ export default function ProjectBrowser({ projects }: { projects: Project[] }) {
   const selectedImages = splitList(selectedProject.images);
   const selectedStack = splitList(selectedProject.category);
   const liveUrl = safeUrl(selectedProject.link);
-  const githubUrl = safeUrl(selectedProject.github);
 
   return (
     <div className="mt-10 grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
@@ -137,16 +136,6 @@ export default function ProjectBrowser({ projects }: { projects: Project[] }) {
                   className="rounded-md bg-paper px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
                 >
                   Open live project
-                </a>
-              ) : null}
-              {githubUrl ? (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-paper transition-colors hover:border-signal hover:text-signal"
-                >
-                  View source
                 </a>
               ) : null}
             </div>

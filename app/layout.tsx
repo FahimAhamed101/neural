@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/site-config";
+import ContentApiConsoleMonitor from "@/components/ContentApiConsoleMonitor";
 import "./globals.css";
 import "./reference.css";
 import "./blog.css";
 import "./service.css";
+import "./project.css";
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
@@ -93,6 +95,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const analyticsId = JSON.stringify(siteConfig.googleAnalyticsId);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -107,7 +110,7 @@ export default function RootLayout({
         email: siteConfig.email,
         telephone: `+${siteConfig.whatsappNumber}`,
         areaServed: ["Bangladesh", "Worldwide"],
-        sameAs: [siteConfig.fiverrUrl, siteConfig.githubUrl],
+        sameAs: [siteConfig.fiverrUrl],
         contactPoint: {
           "@type": "ContactPoint",
           telephone: `+${siteConfig.whatsappNumber}`,
@@ -133,18 +136,19 @@ export default function RootLayout({
       <head>
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-8QEP5HDLEJ"
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`}
         />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-8QEP5HDLEJ');`,
+gtag('config', ${analyticsId});`,
           }}
         />
       </head>
       <body>
+        <ContentApiConsoleMonitor />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
