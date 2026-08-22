@@ -4,10 +4,10 @@ import { useState } from "react";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 const navItems = [
-  { label: "Home", href: "#top" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#projects" },
+  { label: "Home", href: "/#top" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#projects" },
   { label: "Insights", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -16,7 +16,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="site-header">
-      <a href="#top" className="brand" aria-label={`${siteConfig.name} home`}>
+      <a href="/#top" className="brand" aria-label={`${siteConfig.name} home`}>
         <span className="brand-mark"><i /><i /><i /></span><span>Neural</span>
       </a>
       <nav className={open ? "nav open" : "nav"} aria-label="Primary">

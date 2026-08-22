@@ -10,8 +10,21 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Insights from "@/components/Insights";
+import { siteConfig } from "@/lib/site-config";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: { absolute: `Web & Mobile App Development Company | ${siteConfig.name}` },
+  description: "Neural IT Limited is a web and mobile app development company in Bangladesh building fast websites, iOS and Android apps, custom software, and AI automation for clients worldwide.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: `Web & Mobile App Development Company | ${siteConfig.name}`,
+    description: "Custom websites, mobile apps, business software, and practical AI automation for growing companies in Bangladesh and worldwide.",
+    images: ["/og-image.png"],
+  },
+};
 
 export default function HomePage() {
   return (
@@ -33,3 +46,4 @@ export default function HomePage() {
     </>
   );
 }
+import type { Metadata } from "next";

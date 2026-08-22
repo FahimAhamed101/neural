@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 import "./reference.css";
 import "./blog.css";
+import "./service.css";
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
