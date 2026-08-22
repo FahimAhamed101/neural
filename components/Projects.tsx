@@ -1,53 +1,28 @@
 import { getProjects } from "@/lib/projects";
-import ProjectBrowser from "./ProjectBrowser";
-import RouteLabel from "./RouteLabel";
+
+function clean(value: string) {
+  return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
 
 export default async function Projects() {
-  const projects = await getProjects();
-
+  const all = await getProjects();
+  const projects = all.filter((project) => project.images).slice(0, 4);
   return (
-    <section id="projects" className="border-b border-line bg-ink px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="rounded-lg border border-line bg-white p-6 shadow-[0_24px_70px_rgba(23,33,29,0.08)] sm:p-8">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div>
-              <RouteLabel path="Portfolio" />
-              <h2 className="max-w-2xl font-display text-3xl font-bold text-paper sm:text-4xl">
-                Proof of work across web, mobile, and full-stack systems.
-              </h2>
-              <p className="mt-4 max-w-2xl leading-relaxed text-paper-dim">
-                Review real projects with screenshots, technology stacks, live
-                links, and source links. Select any project to inspect it
-                without leaving the page.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 overflow-hidden rounded-lg border border-line bg-ink text-center">
-              <div className="border-r border-line px-4 py-3">
-                <p className="font-display text-2xl font-bold text-paper">
-                  {projects.length}
-                </p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-paper-dim">
-                  Projects
-                </p>
-              </div>
-              <div className="border-r border-line px-4 py-3">
-                <p className="font-display text-2xl font-bold text-paper">8+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-paper-dim">
-                  Stacks
-                </p>
-              </div>
-              <div className="px-4 py-3">
-                <p className="font-display text-2xl font-bold text-paper">1</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-paper-dim">
-                  Page
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <ProjectBrowser projects={projects} />
-        </div>
+    <section id="projects" className="portfolio section-pad">
+      <div className="section-head"><div><p className="kicker">Our portfolio</p><h2>Portfolio of AI excellence</h2><a className="text-link portfolio-link" href="#contact">Explore more <span>↗</span></a></div><div className="project-count"><strong>{all.length}+</strong><span>Completed projects</span></div></div>
+      <div className="project-stack">
+        {projects.map((project, index) => {
+          const image = project.images.split(",")[0];
+          const link = project.link.startsWith("http") ? project.link : project.github;
+          const tags = project.category.split(",").slice(0, 2);
+          return (
+            <article className="project-card" key={project.id}>
+              <div className="project-tags">{tags.map((tag) => <span key={tag}>{tag.trim()}</span>)}</div>
+              <div className="project-media"><img src={image} alt={`${project.title} project preview`} loading={index ? "lazy" : "eager"} /></div>
+              <div className="project-meta"><div><p>Project name</p><h3>{project.title.trim()}</h3><small>{clean(project.description).slice(0, 105)}</small></div>{link.startsWith("http") ? <a href={link} target="_blank" rel="noreferrer" className="mini-pill">Full project <span>↗</span></a> : null}</div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

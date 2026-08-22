@@ -1,50 +1,31 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
-import { WhatsAppGlyph } from "./WhatsAppFloatingButton";
 
 const navItems = [
+  { label: "Home", href: "#top" },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-  { label: "Process", href: "#process" },
+  { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-line/80 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="#top" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-md bg-paper text-sm font-bold text-white">
-            N
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight text-paper">
-            {siteConfig.name}
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-semibold text-paper-dim transition-colors hover:text-signal"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href={getWhatsAppLink()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-md bg-success px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.03]"
-        >
-          <WhatsAppGlyph className="h-4 w-4" />
-          WhatsApp
-        </a>
+    <header className="site-header">
+      <a href="#top" className="brand" aria-label={`${siteConfig.name} home`}>
+        <span className="brand-mark"><i /><i /><i /></span><span>Neural</span>
+      </a>
+      <nav className={open ? "nav open" : "nav"} aria-label="Primary">
+        {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
+      </nav>
+      <div className="header-actions">
+        <a className="pill pill-lime header-cta" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">WhatsApp <span>↗</span></a>
+        <a className="pill pill-fiverr header-cta" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer">Find me on Fiverr <span>↗</span></a>
       </div>
+      <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}><span /><span /></button>
     </header>
   );
 }

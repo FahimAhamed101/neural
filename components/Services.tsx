@@ -1,65 +1,20 @@
-import RouteLabel from "./RouteLabel";
+"use client";
 
+import { useState } from "react";
 const services = [
-  {
-    file: "company-website",
-    title: "Company websites",
-    description:
-      "Professional websites for software, service, education, healthcare, real estate, and local businesses with fast loading and strong SEO foundations.",
-  },
-  {
-    file: "mobile-app",
-    title: "Mobile app development",
-    description:
-      "Android and iOS app experiences for bookings, ecommerce, delivery, learning, service requests, and customer portals.",
-  },
-  {
-    file: "business-software",
-    title: "Custom software systems",
-    description:
-      "Admin panels, dashboards, CRM tools, inventory systems, reporting portals, and internal workflows built around your operation.",
-  },
-  {
-    file: "growth-support",
-    title: "SEO, maintenance, and support",
-    description:
-      "Performance checks, content structure, technical SEO, security updates, bug fixes, and ongoing improvements after launch.",
-  },
+  { title: "AI-powered data analytics", meta: "AI insights & automation", image: "https://res.cloudinary.com/fahim1213456/image/upload/v1775757672/vwdgxjkwswjp8bdemh70.png" },
+  { title: "Websites & ecommerce", meta: "Next.js, React & Laravel", image: "https://res.cloudinary.com/fahim1213456/image/upload/v1761948055/vechahayrxk7rn2lsboa.png" },
+  { title: "Mobile app development", meta: "Flutter, Kotlin & React Native", image: "https://res.cloudinary.com/fahim1213456/image/upload/v1773793100/rebjtceyfmlypkeoh9p0.png" },
+  { title: "Custom business systems", meta: "Dashboards, API & automation", image: "https://res.cloudinary.com/fahim1213456/image/upload/v1769815356/rgwswxk8i4chumfaqjng.png" },
 ];
-
 export default function Services() {
+  const [active, setActive] = useState(0); const item = services[active];
   return (
-    <section id="services" className="border-b border-line bg-white px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <RouteLabel path="Services" />
-        <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <h2 className="max-w-2xl font-display text-3xl font-bold text-paper sm:text-4xl">
-            Software services built for real business outcomes.
-          </h2>
-          <p className="max-w-sm text-sm leading-relaxed text-paper-dim">
-            Clear scope, practical technology, and communication that keeps
-            clients confident while the work is moving.
-          </p>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {services.map((service) => (
-            <div
-              key={service.file}
-              className="rounded-lg border border-line bg-ink p-7 shadow-sm transition-transform hover:-translate-y-1"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wide text-signal">
-                {service.file}
-              </p>
-              <h3 className="mt-4 font-display text-xl font-bold text-paper">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-paper-dim">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
+    <section id="services" className="services dark-section section-pad">
+      <div className="section-head light-head"><div><p className="kicker">Our services</p><h2>Our best AI solutions</h2></div><a href="#contact" className="text-link light">Explore more <span>↗</span></a></div>
+      <div className="services-layout">
+        <div className="service-list">{services.map((service, index) => <button key={service.title} className={active === index ? "active" : ""} onClick={() => setActive(index)}><span>{service.title}</span><small>{service.meta}</small></button>)}</div>
+        <article className="service-feature"><div className="service-image"><img src={item.image} alt="Selected Neural IT project preview" /></div><div className="service-content"><p>Featured capability</p><h3>{item.title}</h3><p>We turn complex product ideas into simple, high-performance experiences with thoughtful strategy, strong visual design, and reliable engineering.</p><a className="text-link light" href="#projects">View details <span>↗</span></a></div></article>
       </div>
     </section>
   );

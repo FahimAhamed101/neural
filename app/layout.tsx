@@ -1,28 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
-
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
+import "./reference.css";
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
@@ -32,8 +12,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  category: "technology",
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    default: `${siteConfig.name} | Web, Mobile & AI Solutions`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -52,6 +34,15 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   alternates: {
     canonical: "/",
+    languages: {
+      en: "/",
+      "x-default": "/",
+    },
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   robots: {
     index: true,
@@ -64,6 +55,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "rtJcLUUii70K3p547_4ph8gxG_SMikjLwyLiTGsWhhg",
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
@@ -73,7 +67,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} software company preview`,
@@ -84,11 +78,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} | Websites, mobile apps, and software`,
     description: siteConfig.description,
-    images: ["/opengraph-image"],
+    images: ["/og-image.png"],
   },
   icons: {
-    icon: "/icon",
-    apple: "/apple-icon",
+    icon: "/icon-64.png",
+    apple: "/apple-icon-180.png",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -100,32 +94,52 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    image: `${siteConfig.url}/opengraph-image`,
-    priceRange: "$$",
-    email: siteConfig.email,
-    telephone: `+${siteConfig.whatsappNumber}`,
-    areaServed: ["Bangladesh", "Worldwide"],
-    knowsAbout: [
-      "Website development",
-      "Mobile app development",
-      "Custom software development",
-      "Next.js",
-      "React",
-      "Search engine optimization",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/icon-64.png`,
+        image: `${siteConfig.url}/og-image.png`,
+        email: siteConfig.email,
+        telephone: `+${siteConfig.whatsappNumber}`,
+        areaServed: ["Bangladesh", "Worldwide"],
+        sameAs: [siteConfig.fiverrUrl, siteConfig.githubUrl],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: `+${siteConfig.whatsappNumber}`,
+          contactType: "sales",
+          availableLanguage: ["English", "Bengali"],
+          areaServed: "Worldwide",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        inLanguage: "en",
+        publisher: { "@id": `${siteConfig.url}/#organization` },
+      },
     ],
-    sameAs: [],
   };
 
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable}`}
-    >
+    <html lang="en">
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8QEP5HDLEJ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8QEP5HDLEJ');`}
+        </Script>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

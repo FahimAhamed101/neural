@@ -1,60 +1,11 @@
-import RouteLabel from "./RouteLabel";
-
+"use client";
+import { useState } from "react";
 const steps = [
-  {
-    stage: "01",
-    title: "Message on WhatsApp",
-    description:
-      "Send your idea, business type, and any reference links. We reply with useful next steps before asking for a meeting.",
-  },
-  {
-    stage: "02",
-    title: "Scope and proposal",
-    description:
-      "You receive a clear feature list, estimated timeline, and budget range so decisions are simple and transparent.",
-  },
-  {
-    stage: "03",
-    title: "Design and development",
-    description:
-      "We prepare the structure, design the screens, build the system, and share progress through review links.",
-  },
-  {
-    stage: "04",
-    title: "Launch and support",
-    description:
-      "After testing, we deploy the project and stay available for updates, fixes, and future improvements.",
-  },
+  { title: "Discovery & consultation", text: "We learn your goals, users, current challenges, and the outcome that would make the project valuable." },
+  { title: "Solution design & ideation", text: "We map the experience, explore creative directions, and turn the strongest idea into a clear product plan." },
+  { title: "Development & integration", text: "We build, test, and integrate the solution with regular review points so you always know what is happening." },
 ];
-
 export default function Process() {
-  return (
-    <section id="process" className="border-b border-line bg-white px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <RouteLabel path="Process" />
-        <h2 className="max-w-xl font-display text-3xl font-bold text-paper sm:text-4xl">
-          A simple process that feels professional from day one.
-        </h2>
-
-        <ol className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
-            <li
-              key={step.stage}
-              className="rounded-lg border border-line bg-ink p-6 shadow-sm"
-            >
-              <span className="font-display text-3xl font-bold text-signal">
-                {step.stage}
-              </span>
-              <h3 className="mt-4 font-display text-lg font-bold text-paper">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-paper-dim">
-                {step.description}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
+  const [active, setActive] = useState(0);
+  return <section id="process" className="process dark-section section-pad"><div className="process-grid"><div><p className="kicker">Work process</p><h2>How Neural innovates</h2><div className="steps">{steps.map((step, i) => <button key={step.title} className={active === i ? "active" : ""} onClick={() => setActive(i)}><span>{String(i + 1).padStart(2, "0")}</span><div><b>{step.title}</b>{active === i ? <p>{step.text}</p> : null}</div><i>{active === i ? "×" : "+"}</i></button>)}</div></div><div className="process-art"><div className="process-orb"><i /><i /><i /></div><span>IDEA<br />TO<br />IMPACT</span></div></div></section>;
 }

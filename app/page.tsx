@@ -7,6 +7,8 @@ import Process from "@/components/Process";
 import ContactCta from "@/components/ContactCta";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import Team from "@/components/Team";
+import Testimonials from "@/components/Testimonials";
 
 export default function HomePage() {
   return (
@@ -14,10 +16,12 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <Stack />
         <Services />
         <Projects />
-        <Stack />
+        <Team />
         <Process />
+        <Testimonials />
         <ContactCta />
       </main>
       <Footer />
