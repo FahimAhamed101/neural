@@ -26,18 +26,38 @@ function displayApiUrl(value) {
 }
 
 const topicSeeds = [
-  "AI automation for small and medium businesses",
-  "mobile app strategy for service businesses",
-  "ecommerce conversion and customer experience",
-  "custom business dashboards and reporting",
-  "website performance and technical SEO",
-  "responsible AI product design",
-  "software modernization for growing companies",
-  "customer support chatbots and assistants",
-  "data analytics for better business decisions",
-  "web accessibility and inclusive product design",
-  "cloud-ready application architecture",
-  "digital product planning for founders",
+  "web development company",
+  "web development services",
+  "custom web development",
+  "website development company",
+  "web application development",
+  "ecommerce website development",
+  "website redesign services",
+  "website development cost",
+  "web development for small business",
+  "mobile app development",
+  "mobile app development company",
+  "app development services",
+  "custom mobile app development",
+  "hire app developer",
+  "Android app development",
+  "iOS app development",
+  "React Native app development",
+  "cross-platform app development",
+  "app development for startups",
+  "SaaS development company",
+  "MVP development company",
+  "custom software development company",
+  "AI application development company",
+  "business automation development",
+  "real estate app development",
+  "healthcare app development",
+  "restaurant app development",
+  "logistics software development",
+  "education app development",
+  "fintech app development",
+  "booking app development",
+  "marketplace app development",
 ];
 
 function readJson(file, fallback) {
@@ -102,8 +122,9 @@ function validate(post, existing) {
   if (post.title.length < 35 || post.title.length > 72) issues.push("Title must be 35-72 characters");
   if (post.description.length < 110 || post.description.length > 165) issues.push("Description must be 110-165 characters");
   if (post.sections.length < 5) issues.push("At least five article sections are required");
-  if (words < 750) issues.push(`Article is too short (${words} words)`);
+  if (words < 850) issues.push(`Article is too short (${words} words)`);
   if (!Array.isArray(post.keywords) || post.keywords.length < 4) issues.push("At least four relevant keywords are required");
+  if (!post.primaryKeyword) issues.push("Primary keyword is required");
   if (!Array.isArray(post.faq) || post.faq.length < 3) issues.push("At least three FAQ entries are required");
   const normalizedTitle = post.title.toLowerCase().replace(/[^a-z0-9]/g, "");
   if (existing.some((item) => item.title.toLowerCase().replace(/[^a-z0-9]/g, "") === normalizedTitle)) issues.push("Duplicate title");
@@ -115,39 +136,156 @@ function validate(post, existing) {
 
 async function planTopics(existing) {
   const day = new Date().toISOString().slice(0, 10);
-  const recentTitles = existing.slice(-40).map((post) => post.title);
-  const prompt = `You plan useful editorial content for Neural IT Limited, a Bangladesh-based global web, mobile, custom software, and AI solutions agency.
-Today is ${day}. Create exactly 6 distinct, commercially relevant topics. Five must be evergreen educational articles and one must be a cautious technology industry update labeled news. Never invent a breaking event, statistic, company announcement, or quote. The goal is to help real buyers make better technology decisions, not manipulate search rankings.
+  const recentTitles = existing.slice(-80).map((post) => post.title);
+  const recentKeywords = existing.slice(-80).flatMap((post) => post.keywords || []).slice(-250);
+
+  const prompt = `You are the SEO content strategist for Neural IT Limited, a Bangladesh-based company serving international clients with web development, mobile app development, ecommerce, SaaS, custom software, API, AI application, and business automation services.
+
+Today is ${day}.
+
+PRIMARY BUSINESS GOAL
+Create content that attracts prospective clients from Google Search. Prioritize buyer intent and commercial relevance over raw traffic volume.
+
+Create exactly 6 distinct content opportunities using this required mix:
+1. Two high-commercial-intent web or mobile development topics.
+2. Two industry-specific development topics.
+3. One pricing, cost, hiring, or comparison topic.
+4. One useful technology-trend or educational topic directly connected to a service Neural IT Limited sells.
+
+PRIORITIZE SEARCH INTENT SUCH AS
+- development company
+- development services
+- custom development
+- hire developer
+- development cost
+- development price
+- best development company
+- development for startups
+- development for small businesses
+- development for a specific industry
+- agency vs freelancer
+- native vs cross-platform
+- custom vs template / SaaS / no-code
+- MVP cost
+- website redesign cost
+- ecommerce development cost
+
+TARGET SERVICES
+- web development
+- custom website development
+- web application development
+- ecommerce development
+- Shopify development
+- WordPress development
+- mobile app development
+- Android development
+- iOS development
+- React Native development
+- cross-platform app development
+- SaaS development
+- MVP development
+- custom software development
+- API development
+- AI application development
+- business automation
+
+TARGET INDUSTRIES
+- real estate
+- healthcare
+- restaurants
+- ecommerce
+- retail
+- logistics
+- education
+- fintech
+- travel
+- hospitality
+- construction
+- professional services
+- startups
+- small businesses
+
+AVOID LOW CLIENT-INTENT TOPICS
+Do not target courses, tutorials, learning roadmaps, certifications, interview questions, salaries, jobs, internships, coding exercises, source-code downloads, free templates, student projects, homework, or "how to become a developer" queries.
+
+QUALITY RULES
+- Never invent search volume, CPC, rankings, statistics, clients, awards, research, quotes, releases, or current events.
+- Do not claim guaranteed rankings, guaranteed leads, guaranteed revenue, or guaranteed business results.
+- Do not create thin location doorway pages.
+- Avoid keyword stuffing.
+- Every topic must answer a real buying question or project-planning problem.
+- Use service keywords naturally.
+- Prefer specific long-tail topics when they show stronger purchase intent.
+- Do not repeat or closely paraphrase existing titles or primary keywords.
+
 Topic inspiration: ${topicSeeds.join("; ")}.
 Avoid these existing titles: ${recentTitles.join(" | ")}.
-Return only JSON in this shape: {"topics":[{"title":"...","kind":"evergreen","primaryKeyword":"...","audience":"...","angle":"..."}]}. Exactly one item must use kind "news".`;
-  const data = extractJson(await completion([{ role: "user", content: prompt }], { maxTokens: 1400 }));
-  if (!Array.isArray(data.topics) || data.topics.length !== 6) throw new Error("Topic planner did not return exactly six topics");
+Avoid overusing these recent keywords: ${recentKeywords.join(" | ")}.
+
+Return only valid JSON in this exact shape:
+{"topics":[{"title":"...","kind":"commercial","primaryKeyword":"...","secondaryKeywords":["..."],"audience":"...","industry":"...","funnelStage":"...","service":"...","searchIntent":"...","customerProblem":"...","angle":"...","cta":"..."}]}
+
+Allowed kind values: commercial, industry, decision, authority.
+Exactly 6 topics are required.`;
+
+  const data = extractJson(await completion([{ role: "user", content: prompt }], { maxTokens: 2200 }));
+  if (!Array.isArray(data.topics) || data.topics.length !== 6) {
+    throw new Error("Topic planner did not return exactly six topics");
+  }
   return data.topics;
 }
 
 async function createArticle(topic, existing) {
-  const prompt = `Write a trustworthy, original article for Neural IT Limited.
-Topic: ${topic.title}
+  const prompt = `Write a trustworthy, original, client-acquisition SEO article for Neural IT Limited.
+
+TOPIC
+Title idea: ${topic.title}
 Type: ${topic.kind}
 Primary keyword: ${topic.primaryKeyword}
+Secondary keywords: ${(topic.secondaryKeywords || []).join(", ")}
 Audience: ${topic.audience}
+Industry: ${topic.industry || "general business"}
+Funnel stage: ${topic.funnelStage || "consideration"}
+Service to promote: ${topic.service || "web and app development"}
+Search intent: ${topic.searchIntent || "commercial investigation"}
+Customer problem: ${topic.customerProblem || topic.angle}
 Angle: ${topic.angle}
+Suggested CTA: ${topic.cta || "Talk with Neural IT Limited about your project."}
 
-Requirements:
-- 850-1200 words of practical, specific guidance with no filler.
-- Never claim guaranteed SEO rankings or invent statistics, quotes, clients, research, product releases, or current events.
-- If type is news, write a general industry update/analysis and explicitly distinguish established facts from forward-looking interpretation.
-- Use the primary keyword naturally; no keyword stuffing.
-- Include 5-7 sections, each with 2-3 substantial paragraphs.
-- Include exactly 3 useful FAQs and a restrained client-focused CTA.
+CONTENT GOAL
+Answer the searcher's question better than a generic agency landing page, while naturally positioning Neural IT Limited as a possible development partner.
+
+REQUIREMENTS
+- 900-1400 words of practical, specific guidance with no filler.
+- Write for founders, business owners, managers, and teams considering a real project.
+- Put the most decision-useful information early in the article.
+- Use the primary keyword naturally in the title, introduction, and relevant headings when appropriate.
+- Use secondary keywords only where they fit naturally.
+- Never keyword-stuff.
+- Include 5-7 useful sections, each with 2-3 substantial paragraphs.
+- Include decision criteria, common risks, budget/timeline factors, or project-planning guidance where relevant.
+- For cost articles, explain the factors that change cost rather than inventing exact market prices.
+- For comparison articles, present balanced tradeoffs and explain who each option is best for.
+- For industry articles, include industry-specific workflows, features, integrations, compliance considerations, or operational challenges when relevant.
+- For service-selection articles, explain what buyers should ask a development company before hiring.
+- Include exactly 3 useful FAQs.
+- End with a restrained, specific CTA related to the service and customer problem.
 - Description must be 110-165 characters and accurately summarize the article.
 - Title must be 35-72 characters.
 - Plain text only inside fields; no Markdown or HTML.
 
+TRUST & SAFETY RULES
+- Never claim guaranteed SEO rankings, leads, revenue, downloads, app-store success, or business results.
+- Never invent statistics, quotes, clients, case studies, certifications, awards, research, product releases, current events, or company announcements.
+- Do not claim Neural IT Limited has experience in a specific regulated industry unless the article only describes general capabilities and considerations.
+- Do not fabricate prices. If exact pricing is unknown, discuss cost drivers and recommend a project estimate.
+- Do not attack competitors.
+- Do not write for students, job seekers, or people looking for coding tutorials.
+
 Return only valid JSON:
 {"title":"","description":"","category":"","keywords":[""],"sections":[{"heading":"","paragraphs":[""]}],"faq":[{"question":"","answer":""}],"ctaTitle":"","ctaText":""}`;
-  const articleResponse = await completion([{ role: "user", content: prompt }], { maxTokens: 4200 });
+
+  const articleResponse = await completion([{ role: "user", content: prompt }], { maxTokens: 5000 });
   let raw;
   try {
     raw = extractJson(articleResponse);
@@ -156,25 +294,55 @@ Return only valid JSON:
     const repaired = await completion([
       { role: "system", content: "You are a strict JSON repair tool. Return one valid JSON object only. Preserve the supplied meaning and fields. Escape quotation marks inside strings, remove trailing commas, and do not add Markdown fences." },
       { role: "user", content: articleResponse },
-    ], { temperature: 0, maxTokens: 4400 });
+    ], { temperature: 0, maxTokens: 5200 });
     try { raw = extractJson(repaired); } catch { throw parseError; }
   }
+
   const now = new Date();
-  const kind = topic.kind === "news" ? "news" : "evergreen";
+  const kind = ["commercial", "industry", "decision", "authority"].includes(topic.kind) ? topic.kind : "commercial";
   const baseSlug = slugify(raw.title || topic.title);
   let slug = baseSlug;
   if (existing.some((post) => post.slug === slug)) slug = `${baseSlug}-${now.toISOString().slice(0, 10)}`;
+
   const post = {
-    id: crypto.randomUUID(), slug, title: String(raw.title || topic.title).trim(),
-    description: String(raw.description || "").trim(), category: String(raw.category || "Digital Strategy").trim(), kind,
-    keywords: Array.isArray(raw.keywords) ? raw.keywords.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 10) : [],
-    sections: Array.isArray(raw.sections) ? raw.sections.map((section) => ({ heading: String(section.heading || "").trim(), paragraphs: Array.isArray(section.paragraphs) ? section.paragraphs.map(String).map((item) => item.trim()).filter(Boolean) : [] })).filter((section) => section.heading && section.paragraphs.length) : [],
-    faq: Array.isArray(raw.faq) ? raw.faq.map((item) => ({ question: String(item.question || "").trim(), answer: String(item.answer || "").trim() })).filter((item) => item.question && item.answer).slice(0, 3) : [],
-    ctaTitle: String(raw.ctaTitle || "Plan your next digital product with confidence").trim(),
-    ctaText: String(raw.ctaText || "Talk with Neural IT Limited about a practical path from idea to launch.").trim(),
-    readingMinutes: 1, status: "draft", qualityIssues: [], publishedAt: now.toISOString(), updatedAt: now.toISOString(),
-    expiresAt: new Date(now.getTime() + (kind === "news" ? 90 : 7) * dailyMs).toISOString(),
+    id: crypto.randomUUID(),
+    slug,
+    title: String(raw.title || topic.title).trim(),
+    description: String(raw.description || "").trim(),
+    category: String(raw.category || "Web & App Development").trim(),
+    kind,
+    primaryKeyword: String(topic.primaryKeyword || "").trim(),
+    secondaryKeywords: Array.isArray(topic.secondaryKeywords) ? topic.secondaryKeywords.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 12) : [],
+    audience: String(topic.audience || "business decision-makers").trim(),
+    industry: String(topic.industry || "general business").trim(),
+    funnelStage: String(topic.funnelStage || "consideration").trim(),
+    service: String(topic.service || "web and app development").trim(),
+    searchIntent: String(topic.searchIntent || "commercial investigation").trim(),
+    keywords: Array.isArray(raw.keywords) ? raw.keywords.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 12) : [],
+    sections: Array.isArray(raw.sections)
+      ? raw.sections.map((section) => ({
+          heading: String(section.heading || "").trim(),
+          paragraphs: Array.isArray(section.paragraphs)
+            ? section.paragraphs.map(String).map((item) => item.trim()).filter(Boolean)
+            : [],
+        })).filter((section) => section.heading && section.paragraphs.length)
+      : [],
+    faq: Array.isArray(raw.faq)
+      ? raw.faq.map((item) => ({
+          question: String(item.question || "").trim(),
+          answer: String(item.answer || "").trim(),
+        })).filter((item) => item.question && item.answer).slice(0, 3)
+      : [],
+    ctaTitle: String(raw.ctaTitle || "Plan your web or app project with confidence").trim(),
+    ctaText: String(raw.ctaText || "Talk with Neural IT Limited about your requirements, timeline, and a practical path from idea to launch.").trim(),
+    readingMinutes: 1,
+    status: "draft",
+    qualityIssues: [],
+    publishedAt: now.toISOString(),
+    updatedAt: now.toISOString(),
+    expiresAt: null,
   };
+
   const result = validate(post, existing);
   post.readingMinutes = Math.max(4, Math.ceil(result.words / 220));
   post.qualityIssues = result.issues;
@@ -185,7 +353,15 @@ Return only valid JSON:
 function cleanup() {
   const posts = readJson(postsPath, []);
   const now = Date.now();
-  const retained = posts.filter((post) => new Date(post.expiresAt).getTime() > now);
+
+  // SEO articles should remain available so they have time to rank and build authority.
+  // Only remove a post when it has an explicit expiresAt date in the past.
+  const retained = posts.filter((post) => {
+    if (!post.expiresAt) return true;
+    const expiresAt = new Date(post.expiresAt).getTime();
+    return !Number.isFinite(expiresAt) || expiresAt > now;
+  });
+
   if (retained.length !== posts.length) {
     writeJson(postsPath, retained);
     log(`Retention cleanup removed ${posts.length - retained.length} expired post(s).`);
