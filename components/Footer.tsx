@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site-config";
+import { getPhoneLink, siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   const facebookUrl =
@@ -18,19 +18,18 @@ export default function Footer() {
 
         <nav>
           <a href="/services/web-development">Web development</a>
+          <a href="/services/website-repair">Website &amp; app repair</a>
           <a href="/services/mobile-app-development">App development</a>
           <a href="/blog">Insights</a>
           <a href="/#contact">Contact</a>
         </nav>
 
+        <div className="footer-contact" aria-label="Contact Neural IT Limited">
+          <a href={getPhoneLink()} data-google-ads-conversion><span>Call</span>{siteConfig.phoneDisplay}</a>
+          <a href={`mailto:${siteConfig.email}`} data-google-ads-conversion><span>Email</span>{siteConfig.email}</a>
+        </div>
+
         <div className="socials">
-          <a
-            href={`mailto:${siteConfig.email}`}
-            aria-label="Email Neural IT"
-            data-google-ads-conversion
-          >
-            em
-          </a>
 
           <a
             href={siteConfig.fiverrUrl}
@@ -58,12 +57,12 @@ export default function Footer() {
           © {new Date().getFullYear()} {siteConfig.name}
         </span>
 
-        <span>Dhaka, Bangladesh · Worldwide</span>
+        <span>Dhaka, Bangladesh · Serving clients worldwide</span>
 
         <div>
-          <a href={`mailto:${siteConfig.email}`} data-google-ads-conversion>
-            Email
-          </a>
+          <a href={getPhoneLink()} data-google-ads-conversion>Call us</a>
+
+          <a href={`mailto:${siteConfig.email}`} data-google-ads-conversion>Email us</a>
 
           <a
             href={siteConfig.fiverrUrl}

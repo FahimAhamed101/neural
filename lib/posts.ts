@@ -30,7 +30,7 @@ export type GeneratedPost = {
   qualityIssues: string[];
   publishedAt: string;
   updatedAt: string;
-  expiresAt: string;
+  expiresAt: string | null;
 };
 
 const postsFile = path.join(process.cwd(), "data", "generated-posts.json");
@@ -46,7 +46,11 @@ export function getAllPosts(): GeneratedPost[] {
 export function getPublishedPosts(): GeneratedPost[] {
   const now = Date.now();
   return getAllPosts()
-    .filter((post) => post.status === "published" && new Date(post.expiresAt).getTime() > now)
+    .filter(
+      (post) =>
+        post.status === "published" &&
+        (!post.expiresAt || new Date(post.expiresAt).getTime() > now),
+    )
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 

@@ -2,11 +2,13 @@ export const siteConfig = {
   name: "Neural IT Limited",
   tagline: "Web, mobile, software, and AI solutions",
   description:
-    "Neural IT Limited builds AI solutions, websites, mobile apps, and custom business software for companies in Bangladesh and worldwide.",
+    "Neural IT Limited builds, fixes, redesigns, and maintains websites, web apps, mobile apps, ecommerce stores, and custom business software for clients worldwide.",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://neuralitlimited.com").replace(/\/$/, ""),
   lastModified: "2026-08-23",
   whatsappNumber: "8801706617723",
-  whatsappDefaultMessage: "Hi I need a website or mobile app.",
+  phoneNumber: "+8801706617723",
+  phoneDisplay: "+880 1706-617723",
+  whatsappDefaultMessage: "Hi, I need help developing, fixing, or maintaining a website or app.",
   fiverrUrl: "https://www.fiverr.com/stark420?public_mode=true",
   email: "fahimahamedweb@gmail.com",
   locale: "en_US",
@@ -20,4 +22,8 @@ export const siteConfig = {
 export function getWhatsAppLink(message?: string) {
   const text = encodeURIComponent(message ?? siteConfig.whatsappDefaultMessage);
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${text}`;
+}
+
+export function getPhoneLink() {
+  return `tel:${siteConfig.phoneNumber}`;
 }

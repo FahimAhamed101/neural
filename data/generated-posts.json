@@ -1,5 +1,242 @@
 [
   {
+    "id": "buyer-guide-fiverr-global-development-2026",
+    "slug": "hire-website-app-developer-on-fiverr-buyer-checklist",
+    "title": "Hiring a Website or App Developer on Fiverr: A Buyer Checklist",
+    "description": "A practical guide for international buyers hiring a Fiverr developer to build, fix, rescue, or maintain a website, web app, mobile app, ecommerce store, or API.",
+    "category": "Hiring on Fiverr",
+    "kind": "evergreen",
+    "keywords": ["hire website developer on Fiverr", "Fiverr app developer", "Fiverr website repair", "hire web app developer", "website and app maintenance"],
+    "sections": [
+      {
+        "heading": "Choose a Developer for the Problem You Actually Have",
+        "paragraphs": [
+          "A new marketing website, a broken checkout, an unfinished React application, and a crashing mobile app are different assignments. Begin by naming the product, current technology if known, business-critical problem, desired outcome, and whether you need development, repair, ongoing maintenance, or all three in stages.",
+          "Review a Fiverr seller's relevant work and service description rather than judging only the number of technologies listed. A useful match understands the type of customer journey, integration, or codebase involved and can explain how the work will be tested."
+        ]
+      },
+      {
+        "heading": "Send a Brief That Can Be Estimated",
+        "paragraphs": [
+          "For a new product, describe users, essential screens, required integrations, reference examples, available designs, and the smallest release that would be useful. For repair work, send the URL or app platform, steps to reproduce the problem, expected and actual behavior, error messages, recent changes, and affected devices.",
+          "Do not place passwords, API secrets, private customer data, or payment credentials in an initial message. Ask what access will be required after scope is agreed, then use temporary users, team invitations, or scoped credentials where possible."
+        ]
+      },
+      {
+        "heading": "Use Milestones for International Remote Work",
+        "paragraphs": [
+          "For larger Fiverr projects, divide delivery into verifiable outcomes such as diagnosis, UX or technical plan, working core flow, integrations, testing, and production handover. Each milestone should state what the buyer can review and what feedback is needed before the next stage begins.",
+          "Agree on the main communication window and expected response time across time zones. Remote work does not require both parties to be online together all day, but decisions, blockers, and review dates should be visible so a project does not pause silently."
+        ]
+      },
+      {
+        "heading": "Keep Ownership and Handover Clear",
+        "paragraphs": [
+          "Business accounts for the domain, hosting, source repository, app stores, analytics, email, and payment services should remain under the buyer's control. Give the developer appropriate collaborator access. Confirm whether designs, source code, database changes, deployment configuration, and documentation are included in delivery.",
+          "For inherited projects, ask the developer to identify missing access or ownership before implementation. A technically correct fix can still fail at handover if nobody knows how to deploy it or if the final code exists only on one person's computer."
+        ]
+      },
+      {
+        "heading": "Verify the Result Before Completing the Order",
+        "paragraphs": [
+          "Test agreed acceptance criteria on relevant browsers and devices. For lead-generation sites, submit forms and verify actual delivery. For ecommerce, test the permitted payment flow and confirmation state. For apps, test onboarding, authentication, permissions, network failures, and the repaired feature on supported devices.",
+          "Collect the final source code, deployment notes, remaining issue list, and account-access record. Remove temporary credentials after handover. Neural IT Limited works with Fiverr clients worldwide on website and app development, repairs, inherited-project recovery, and ongoing maintenance with clear scope and testable milestones."
+        ]
+      }
+    ],
+    "faq": [
+      {"question": "What should I send before ordering website or app development on Fiverr?", "answer": "Send the business goal, users, essential features or reproducible bug, reference links, target platforms, existing technology if known, available assets, timeline constraints, and the result you expect to test. Ask for clarification before placing a complex order."},
+      {"question": "Can a Fiverr developer take over an unfinished website or app?", "answer": "Often yes, when the current source code and required accounts are available. A responsible developer should inspect the repository, deployment, integrations, and remaining requirements before confirming the recovery scope."},
+      {"question": "How do I work with a Fiverr developer in another country?", "answer": "Agree on a primary communication channel, timezone overlap, response expectations, review dates, milestone deliverables, and acceptance checks. Keep requirements and decisions documented so asynchronous work remains clear."},
+      {"question": "How do I protect my website or app accounts?", "answer": "Keep accounts under company ownership, use collaborator roles or temporary credentials, limit production-data access, maintain backups, and remove temporary access after delivery. Never post secrets in a public brief."}
+    ],
+    "ctaTitle": "Hire Neural IT for Website & App Work on Fiverr",
+    "ctaText": "Neural IT Limited helps clients worldwide develop, fix, recover, and maintain websites, web apps, mobile apps, ecommerce stores, APIs, and custom software. Send your brief through Fiverr, WhatsApp, phone, or email for a scoped review.",
+    "readingMinutes": 7,
+    "status": "published",
+    "qualityIssues": [],
+    "publishedAt": "2026-08-27T10:00:00.000Z",
+    "updatedAt": "2026-08-27T10:00:00.000Z",
+    "expiresAt": null
+  },
+  {
+    "id": "buyer-guide-website-repair-2026",
+    "slug": "website-repair-services-fix-or-rebuild",
+    "title": "Website Repair Services: Should You Fix or Rebuild Your Website?",
+    "description": "Use this practical assessment to decide whether a broken, slow, outdated, or unfinished website needs focused repairs, a staged modernization, or a complete rebuild.",
+    "category": "Website Repair",
+    "kind": "evergreen",
+    "keywords": ["website repair services", "fix broken website", "website maintenance company", "website redesign", "website developer"],
+    "sections": [
+      {
+        "heading": "Start With the Business-Critical Failure",
+        "paragraphs": [
+          "A website can look outdated and still perform its main job, while a polished website can quietly lose every enquiry through a broken form. Begin by identifying the customer journey that has failed: finding the service, trusting the company, submitting a lead, booking, paying, logging in, or completing another important action.",
+          "Write down what should happen, what happens instead, when the problem began, and which devices or users are affected. Screenshots, screen recordings, error messages, and example URLs help a developer reproduce the issue. A reproducible problem is faster and safer to fix than a vague request to make the website work better."
+        ]
+      },
+      {
+        "heading": "When a Focused Website Repair Is Usually Enough",
+        "paragraphs": [
+          "Repair is often the right choice when the website structure still supports the business and the failures are isolated. Common examples include broken forms, mobile layout defects, JavaScript errors, checkout problems, failed API connections, slow images, incorrect redirects, expired certificates, and a small number of outdated components.",
+          "A repair should include diagnosis, the code or configuration change, testing of the affected journey, and a clear record of what changed. If the fix depends on a third-party platform, the developer should also explain that dependency and what happens if the external service changes again."
+        ]
+      },
+      {
+        "heading": "Signals That a Rebuild May Cost Less Over Time",
+        "paragraphs": [
+          "A rebuild becomes more reasonable when basic updates repeatedly break unrelated features, the code cannot be deployed reliably, essential dependencies are no longer supported, security boundaries are unclear, or nobody can obtain the source code and account access. A website assembled from conflicting plugins may also become more expensive to patch than to replace in controlled stages.",
+          "Do not rebuild only because a framework is no longer fashionable. The decision should reflect maintainability, security, customer impact, operating cost, and the features the business needs next. A good assessment compares repair, staged modernization, and rebuild options instead of presenting the most expensive path as the only path."
+        ]
+      },
+      {
+        "heading": "Prepare Safe Access Before Hiring a Developer",
+        "paragraphs": [
+          "Most repairs require some combination of repository access, hosting logs, deployment settings, domain or DNS access, database access, and test credentials for payments or other integrations. Create role-based or temporary access where the service supports it. Avoid sending personal passwords in chat, and remove access when the work is complete.",
+          "Back up the current website and database before material changes. Confirm where the backup is stored and how it can be restored. For a revenue-producing site, ask whether the developer can test in a staging environment before deploying to customers."
+        ]
+      },
+      {
+        "heading": "Ask for a Repair Plan You Can Verify",
+        "paragraphs": [
+          "A useful proposal identifies the known problem, diagnostic work, expected deliverables, assumptions, exclusions, access requirements, test approach, and deployment responsibility. Unknowns should be described as unknowns rather than hidden inside a fixed promise.",
+          "Before closing the project, test the repaired journey on relevant devices, verify analytics and form delivery, collect the updated source code, and record any remaining risks. Neural IT Limited can assess an inherited website, explain whether repair or rebuilding is more responsible, and implement the agreed path."
+        ]
+      }
+    ],
+    "faq": [
+      {"question": "How much does it cost to fix a website?", "answer": "Cost depends on how easily the problem can be reproduced, the quality of the existing code, required access, affected integrations, and testing risk. A short diagnostic phase is often the most reliable way to establish scope."},
+      {"question": "Can a developer fix a website made by someone else?", "answer": "Usually yes, if the source code, hosting, and relevant accounts are accessible. The developer should inspect the codebase before promising a repair because inherited systems can contain hidden dependencies or incomplete work."},
+      {"question": "How long does website repair take?", "answer": "A contained display or configuration issue may be resolved quickly, while checkout failures, security incidents, data problems, or undocumented integrations can require investigation and staged testing. Reliable timing follows diagnosis."}
+    ],
+    "ctaTitle": "Get a Clear Website Repair Assessment",
+    "ctaText": "Send Neural IT Limited the affected URL, what should happen, what happens instead, and any error message. We will help you determine whether a focused repair, modernization, or rebuild is the responsible next step.",
+    "readingMinutes": 6,
+    "status": "published",
+    "qualityIssues": [],
+    "publishedAt": "2026-08-27T09:00:00.000Z",
+    "updatedAt": "2026-08-27T09:00:00.000Z",
+    "expiresAt": null
+  },
+  {
+    "id": "buyer-guide-hire-fix-developer-2026",
+    "slug": "hire-developer-to-fix-existing-website",
+    "title": "How to Hire a Developer to Fix an Existing Website",
+    "description": "A practical hiring checklist for business owners who need a developer to diagnose bugs, recover an unfinished website, repair integrations, or improve a live codebase.",
+    "category": "Hiring a Developer",
+    "kind": "evergreen",
+    "keywords": ["hire developer to fix website", "website bug fixing developer", "unfinished website help", "web developer for existing website", "website troubleshooting"],
+    "sections": [
+      {
+        "heading": "Describe the Outcome, Not Only the Technology",
+        "paragraphs": [
+          "A useful brief begins with the affected customer or staff member and the action they cannot complete. For example, customers submit a quotation form but the sales inbox receives nothing. This is clearer than asking for a PHP, React, or WordPress expert without describing the failure.",
+          "Include the website URL, affected pages, expected behavior, actual behavior, error text, when it started, and whether every user is affected. Mention recent deployments, plugin updates, hosting changes, or account changes. These details help a developer estimate the diagnostic effort and choose the right tools."
+        ]
+      },
+      {
+        "heading": "Look for Diagnostic Thinking",
+        "paragraphs": [
+          "A capable repair developer should ask how the issue is reproduced, where the application is hosted, whether logs are available, how changes are deployed, and whether there is a safe test environment. Immediate certainty without seeing the system is not a sign of speed; it can be a sign that the risks have not been considered.",
+          "Ask the developer to separate diagnosis from implementation when the cause is unknown. The first deliverable can be a confirmed cause, repair options, risk notes, and an updated estimate. This gives both parties a decision point before larger changes begin."
+        ]
+      },
+      {
+        "heading": "Protect Accounts, Data, and the Live Website",
+        "paragraphs": [
+          "Provide the minimum access needed through team invitations, temporary users, or scoped tokens. Do not share your main email password or reuse a password from another account. Payment systems and production databases need extra care, and customer data should not be copied into informal test environments.",
+          "Confirm that a current backup exists before deployment. For important websites, agree on a rollback method and a low-traffic release window. A repair is not complete merely because code was changed; the live result and the path back from a failed deployment matter too."
+        ]
+      },
+      {
+        "heading": "Define What Done Means",
+        "paragraphs": [
+          "Write acceptance checks in plain language. The form should deliver to the correct inbox, show a success state, preserve validation, and record the analytics event on current mobile and desktop browsers. Concrete checks prevent disagreements about whether the original problem was actually solved.",
+          "Ask what documentation, source code, deployment notes, and access cleanup will be delivered. If the repair exposes other issues, request a prioritized list that separates urgent risks from optional improvements rather than allowing the scope to expand without control."
+        ]
+      },
+      {
+        "heading": "Evaluate the Handover, Not Just the Fix",
+        "paragraphs": [
+          "At completion, you should know what caused the issue, what changed, how the result was tested, and what remains unresolved. The repository should contain the final code, and the person responsible for deployment should be clear. Remove temporary access and store recovery information in a company-controlled account.",
+          "Neural IT Limited works with new and inherited websites, web apps, ecommerce systems, and APIs. We begin with the business-critical journey, diagnose before expanding scope, and communicate when an existing foundation should be repaired or replaced."
+        ]
+      }
+    ],
+    "faq": [
+      {"question": "What should I send a developer before a website repair estimate?", "answer": "Send the URL, steps to reproduce the issue, expected and actual behavior, screenshots or error messages, affected devices, recent changes, and the technology or hosting platform if known. Do not send passwords in the initial brief."},
+      {"question": "Should I pay for diagnosis?", "answer": "For issues with an unknown cause, paid diagnosis is reasonable because reviewing logs, code, infrastructure, and integrations is skilled work. The diagnostic output should be defined and useful even if you do not continue with the repair."},
+      {"question": "How can I avoid being locked into one developer?", "answer": "Keep the domain, hosting, repository, analytics, and third-party accounts under company ownership. Require updated source code, deployment instructions, and documentation, and use role-based access for collaborators."}
+    ],
+    "ctaTitle": "Need a Developer for an Existing Website?",
+    "ctaText": "Share the problem and the current platform with Neural IT Limited. We can review broken features, incomplete work, deployment failures, performance issues, and integration errors, then propose a testable repair plan.",
+    "readingMinutes": 6,
+    "status": "published",
+    "qualityIssues": [],
+    "publishedAt": "2026-08-27T08:30:00.000Z",
+    "updatedAt": "2026-08-27T08:30:00.000Z",
+    "expiresAt": null
+  },
+  {
+    "id": "buyer-guide-website-leads-2026",
+    "slug": "website-not-getting-leads-conversion-checklist",
+    "title": "Why Your Website Is Not Getting Leads: A Conversion Repair Checklist",
+    "description": "Check the offer, contact paths, mobile experience, speed, trust signals, analytics, and follow-up workflow before spending money on more website traffic.",
+    "category": "Website Improvement",
+    "kind": "evergreen",
+    "keywords": ["website not getting leads", "website conversion optimization", "fix business website", "website redesign for leads", "contact form not converting"],
+    "sections": [
+      {
+        "heading": "Confirm That Enquiries Can Reach You",
+        "paragraphs": [
+          "Before changing headlines or buying more advertising, submit every important form from a real mobile device and a desktop browser. Confirm that the customer sees a clear success state, the enquiry reaches the correct inbox or CRM, notifications are not entering spam, and required fields do not reject valid information.",
+          "Test phone, email, WhatsApp, booking, and checkout links as a visitor would. A surprising number of conversion problems are delivery problems: the website appears functional, but the business never receives the lead or cannot identify which page produced it."
+        ]
+      },
+      {
+        "heading": "Make the Offer Understandable in Seconds",
+        "paragraphs": [
+          "A visitor should quickly understand what you provide, who it is for, the problem it solves, and the next step. Replace broad claims with concrete services and outcomes. A headline such as website and app development does more useful work when the supporting copy explains whether you build new products, repair existing ones, handle ecommerce, or integrate business systems.",
+          "Each important service deserves a focused page with relevant examples, process details, common questions, and a direct contact route. Sending every visitor to a generic homepage forces them to translate your capabilities into their own problem."
+        ]
+      },
+      {
+        "heading": "Remove Mobile and Performance Friction",
+        "paragraphs": [
+          "Check whether key text is readable, buttons are easy to tap, navigation is predictable, forms work with the mobile keyboard, and fixed elements do not cover content. Test on a slower connection as well as office Wi-Fi. A large hero image or third-party script can delay the moment when a visitor understands the offer or uses the contact button.",
+          "Performance work should prioritize the pages and moments tied to revenue rather than chasing a perfect score without context. Measure real loading behavior, identify the largest delays, and confirm that optimization does not break analytics, checkout, or accessibility."
+        ]
+      },
+      {
+        "heading": "Add Trust That Helps a Buyer Decide",
+        "paragraphs": [
+          "Useful trust signals include relevant project examples, a clear delivery process, real contact information, ownership details, specific capabilities, and honest explanations of scope. Testimonials are strongest when they can be substantiated and describe the work performed rather than offering generic praise.",
+          "Answer the questions that delay contact: whether you can inherit another developer's code, what access is required, how estimates are prepared, which technologies you support, and how deployment and handover work. Clear boundaries can build more confidence than promising every possible outcome."
+        ]
+      },
+      {
+        "heading": "Measure the Entire Lead Path",
+        "paragraphs": [
+          "Analytics should distinguish meaningful contact actions such as form completion, phone clicks, email clicks, and WhatsApp clicks from ordinary page views. Review which service pages create those actions and whether paid campaigns send visitors to a page that directly matches the advertisement.",
+          "Measurement does not end at the website. Track response time, qualified enquiries, proposals, and completed sales where practical. If clicks increase but qualified leads do not, the problem may be targeting, offer fit, or follow-up rather than the website interface alone."
+        ]
+      }
+    ],
+    "faq": [
+      {"question": "Why do I get website traffic but no enquiries?", "answer": "Common causes include mismatched traffic, unclear positioning, weak service detail, broken contact delivery, mobile friction, low trust, or a slow follow-up process. Review the full journey before assuming more traffic is the answer."},
+      {"question": "Should I redesign a website that is not generating leads?", "answer": "Not automatically. First verify tracking and contact delivery, then identify where users leave or become confused. Focused content, UX, performance, or form repairs may solve the problem without a complete redesign."},
+      {"question": "Which website conversions should I track?", "answer": "Track actions that represent genuine buying intent for your business, such as completed enquiry forms, calls, email clicks, WhatsApp conversations, bookings, checkout completion, or qualified demo requests. Keep ordinary browsing metrics separate."}
+    ],
+    "ctaTitle": "Turn Your Website Into a Clearer Sales Path",
+    "ctaText": "Neural IT Limited can review your offer, contact paths, mobile UX, performance, analytics, and critical service pages, then prioritize fixes that help visitors understand and contact your business.",
+    "readingMinutes": 7,
+    "status": "published",
+    "qualityIssues": [],
+    "publishedAt": "2026-08-27T08:00:00.000Z",
+    "updatedAt": "2026-08-27T08:00:00.000Z",
+    "expiresAt": null
+  },
+  {
     "id": "44125030-b24f-4b41-bcea-216de278ab6a",
     "slug": "a-practical-framework-for-ai-automation-in-smbs",
     "title": "A Practical Framework for AI Automation in SMBs",

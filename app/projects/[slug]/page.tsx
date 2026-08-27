@@ -94,7 +94,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
             <p>{description}</p>
             <div className="button-row">
               <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I viewed the ${title} project and would like to discuss something similar.`)} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Build something similar <span>↗</span></a>
-              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Find me on Fiverr <span>↗</span></a>
+              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Hire us on Fiverr <span>↗</span></a>
               {liveUrl ? <a className="pill pill-outline" href={liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span>↗</span></a> : null}
             </div></div><dl className="project-quick-facts"><div><dt>Product</dt><dd>{type}</dd></div><div><dt>Expertise</dt><dd>{technologies.slice(0, 3).join(", ")}</dd></div><div><dt>Gallery</dt><dd>{images.length} curated view{images.length === 1 ? "" : "s"}</dd></div><div><dt>Studio</dt><dd>{siteConfig.name}</dd></div></dl></div>
           </header>

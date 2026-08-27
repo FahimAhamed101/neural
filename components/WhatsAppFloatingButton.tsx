@@ -1,4 +1,4 @@
-import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
+import { getPhoneLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function WhatsAppFloatingButton() {
   return (
@@ -6,15 +6,14 @@ export default function WhatsAppFloatingButton() {
       <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" aria-label="Chat with Neural IT Limited on WhatsApp" className="floating-contact whatsapp-contact" data-google-ads-conversion>
         <WhatsAppGlyph className="h-5 w-5 shrink-0" /><span>WhatsApp</span>
       </a>
-      <a href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" aria-label="Hire Neural IT Limited on Fiverr" className="floating-contact fiverr-contact" data-google-ads-conversion>
-        <FiverrGlyph /><span>Find me on Fiverr</span>
+      <a href={getPhoneLink()} aria-label={`Call Neural IT Limited at ${siteConfig.phoneDisplay}`} className="floating-contact phone-contact" data-google-ads-conversion>
+        <span className="contact-glyph" aria-hidden="true">☎</span><span>Call {siteConfig.phoneDisplay}</span>
+      </a>
+      <a href={`mailto:${siteConfig.email}`} aria-label={`Email Neural IT Limited at ${siteConfig.email}`} className="floating-contact email-contact" data-google-ads-conversion>
+        <span className="contact-glyph" aria-hidden="true">@</span><span>{siteConfig.email}</span>
       </a>
     </div>
   );
-}
-
-function FiverrGlyph() {
-  return <span className="fiverr-glyph" aria-hidden="true">fi</span>;
 }
 
 export function WhatsAppGlyph({ className }: { className?: string }) {
