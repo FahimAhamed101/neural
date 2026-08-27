@@ -52,6 +52,16 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className="footer-extra-gigs">
+        <div>
+          <span>More ways to work with us</span>
+          <strong>Explore our extra Fiverr gigs</strong>
+        </div>
+        <a href={siteConfig.fiverrExtraGigsUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>
+          View extra gigs <span>↗</span>
+        </a>
+      </div>
+
       <div className="footer-capability-note">
         <strong>We develop and repair websites, web apps, and mobile apps.</strong>
         <span>PHP · Laravel · React · Next.js · Node.js · WordPress · Flutter · React Native · Kotlin · .NET · Django and more</span>

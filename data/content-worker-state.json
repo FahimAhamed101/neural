@@ -1,10 +1,10 @@
 {
   "apiStatus": {
-    "online": true,
-    "detail": "health check succeeded",
-    "checkedAt": "2026-08-27T11:46:05.971Z",
+    "online": false,
+    "detail": "API response did not contain message content",
+    "checkedAt": "2026-08-27T12:37:44.569Z",
     "pollIntervalMs": 60000
   },
-  "lastDailyRun": "2026-08-27T11:41:01.851Z",
-  "nextDailyRun": "2026-08-28T11:41:01.851Z"
+  "lastDailyRun": "2026-08-26T10:56:08.024Z",
+  "nextDailyRun": "2026-08-27T10:56:08.024Z"
 }

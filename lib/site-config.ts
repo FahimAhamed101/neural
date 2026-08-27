@@ -10,6 +10,7 @@ export const siteConfig = {
   phoneDisplay: "+880 1706-617723",
   whatsappDefaultMessage: "Hi, I need help developing, fixing, or maintaining a website or app.",
   fiverrUrl: "https://www.fiverr.com/stark420?public_mode=true",
+  fiverrExtraGigsUrl: "https://www.fiverr.com/s/YLvaW5Q",
   email: "fahimahamedweb@gmail.com",
   locale: "en_US",
   themeColor: "#F7F8FA",

@@ -21,6 +21,7 @@ export type GeneratedPost = {
   description: string;
   category: string;
   kind: PostKind;
+  targetMarket?: string;
   keywords: string[];
   sections: PostSection[];
   faq: PostFaq[];

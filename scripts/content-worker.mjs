@@ -64,6 +64,20 @@ const topicSeeds = [
   "marketplace app development",
 ];
 
+const priorityBuyerMarkets = [
+  { country: "United States", focus: "startups, SaaS, ecommerce, local services, and professional firms" },
+  { country: "United Kingdom", focus: "small businesses, agencies, ecommerce, and service companies" },
+  { country: "Canada", focus: "SaaS, professional services, ecommerce, and growing small businesses" },
+  { country: "Australia", focus: "trade businesses, ecommerce, hospitality, and service companies" },
+  { country: "United Arab Emirates", focus: "real estate, hospitality, ecommerce, and business services" },
+  { country: "Saudi Arabia", focus: "business services, ecommerce, hospitality, and digital products" },
+  { country: "Germany", focus: "B2B services, ecommerce, logistics, and software products" },
+  { country: "Netherlands", focus: "SaaS, ecommerce, logistics, and professional services" },
+  { country: "Singapore", focus: "SaaS, fintech, ecommerce, and regional business services" },
+  { country: "New Zealand", focus: "small businesses, tourism, professional services, and ecommerce" },
+  { country: "Ireland", focus: "technology companies, ecommerce, and professional services" },
+];
+
 function readJson(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, "utf8")); } catch { return fallback; }
 }
@@ -209,6 +223,16 @@ TARGET INDUSTRIES
 - startups
 - small businesses
 
+PRIORITY BUYER MARKETS
+Target international Fiverr buyers in these markets over time: ${priorityBuyerMarkets.map((market) => `${market.country} (${market.focus})`).join("; ")}.
+For this batch, assign one appropriate target market to every topic and distribute the six topics across different countries where possible. The United States should receive the strongest share over time.
+
+LOCATION QUALITY RULES
+- A country may inform the business context, regulations, currency, customer expectations, or industry workflow only when it genuinely helps the buyer.
+- Do not make thin or near-identical country landing pages, doorway pages, or generic "best developer in [country]" claims.
+- Do not imply that Neural IT Limited has a physical office, local staff, clients, certifications, rankings, or legal expertise in a target market unless independently verified.
+- Position Fiverr as a remote hiring channel and write for buyers who need real website, app, repair, or software work.
+
 AVOID LOW CLIENT-INTENT TOPICS
 Do not target courses, tutorials, learning roadmaps, certifications, interview questions, salaries, jobs, internships, coding exercises, source-code downloads, free templates, student projects, homework, or "how to become a developer" queries.
 
@@ -227,7 +251,7 @@ Avoid these existing titles: ${recentTitles.join(" | ")}.
 Avoid overusing these recent keywords: ${recentKeywords.join(" | ")}.
 
 Return only valid JSON in this exact shape:
-{"topics":[{"title":"...","kind":"commercial","primaryKeyword":"...","secondaryKeywords":["..."],"audience":"...","industry":"...","funnelStage":"...","service":"...","searchIntent":"...","customerProblem":"...","angle":"...","cta":"..."}]}
+{"topics":[{"title":"...","kind":"commercial","targetMarket":"...","primaryKeyword":"...","secondaryKeywords":["..."],"audience":"...","industry":"...","funnelStage":"...","service":"...","searchIntent":"...","customerProblem":"...","angle":"...","cta":"..."}]}
 
 Allowed kind values: commercial, industry, decision, authority.
 Exactly 6 topics are required.`;
@@ -248,6 +272,7 @@ Type: ${topic.kind}
 Primary keyword: ${topic.primaryKeyword}
 Secondary keywords: ${(topic.secondaryKeywords || []).join(", ")}
 Audience: ${topic.audience}
+Target buyer market: ${topic.targetMarket || "international"}
 Industry: ${topic.industry || "general business"}
 Funnel stage: ${topic.funnelStage || "consideration"}
 Service to promote: ${topic.service || "web and app development"}
@@ -285,6 +310,7 @@ TRUST & SAFETY RULES
 - Do not fabricate prices. If exact pricing is unknown, discuss cost drivers and recommend a project estimate.
 - Do not attack competitors.
 - Do not write for students, job seekers, or people looking for coding tutorials.
+- If a target market is supplied, use it only where it adds decision-making value. Do not force the country name into every heading or paragraph.
 
 Return only valid JSON:
 {"title":"","description":"","category":"","keywords":[""],"sections":[{"heading":"","paragraphs":[""]}],"faq":[{"question":"","answer":""}],"ctaTitle":"","ctaText":""}`;
@@ -318,6 +344,7 @@ Return only valid JSON:
     primaryKeyword: String(topic.primaryKeyword || "").trim(),
     secondaryKeywords: Array.isArray(topic.secondaryKeywords) ? topic.secondaryKeywords.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 12) : [],
     audience: String(topic.audience || "business decision-makers").trim(),
+    targetMarket: String(topic.targetMarket || "international").trim(),
     industry: String(topic.industry || "general business").trim(),
     funnelStage: String(topic.funnelStage || "consideration").trim(),
     service: String(topic.service || "web and app development").trim(),
@@ -451,4 +478,8 @@ async function main() {
   setInterval(() => tick().catch((error) => log(`Worker error: ${error.message}`)), pollMs);
 }
 
-main().catch((error) => { log(`Fatal worker error: ${error.stack || error.message}`); process.exitCode = 1; });
+main().catch(async (error) => {
+  log(`Fatal worker error: ${error.stack || error.message}`);
+  await postStore.close();
+  process.exitCode = 1;
+});
