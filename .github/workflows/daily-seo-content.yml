@@ -1,0 +1,42 @@
+name: Daily SEO content
+
+on:
+  schedule:
+    - cron: "15 2 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-seo-content
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    env:
+      CONTENT_API_URL: ${{ secrets.CONTENT_API_URL }}
+      CONTENT_API_MODEL: ${{ secrets.CONTENT_API_MODEL }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      MONGODB_DB: nueral
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate required secrets
+        run: |
+          test -n "$CONTENT_API_URL"
+          test -n "$MONGODB_URI"
+
+      - name: Audit and publish due SEO posts
+        run: npm run content:once

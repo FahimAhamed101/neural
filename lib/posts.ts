@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { getMongoDatabase } from "@/lib/mongodb";
 
 export type PostKind = "evergreen" | "news";
 
@@ -35,7 +36,7 @@ export type GeneratedPost = {
 
 const postsFile = path.join(process.cwd(), "data", "generated-posts.json");
 
-export function getAllPosts(): GeneratedPost[] {
+function getLocalPosts(): GeneratedPost[] {
   try {
     return JSON.parse(fs.readFileSync(postsFile, "utf8")) as GeneratedPost[];
   } catch {
@@ -43,9 +44,26 @@ export function getAllPosts(): GeneratedPost[] {
   }
 }
 
-export function getPublishedPosts(): GeneratedPost[] {
+export async function getAllPosts(): Promise<GeneratedPost[]> {
+  try {
+    const database = await getMongoDatabase();
+    if (database) {
+      const posts = await database
+        .collection<GeneratedPost>("seo_posts")
+        .find({}, { projection: { _id: 0 } })
+        .toArray();
+      if (posts.length) return posts;
+    }
+  } catch (error) {
+    console.error("MongoDB posts unavailable; using bundled post data.", error instanceof Error ? error.message : error);
+  }
+
+  return getLocalPosts();
+}
+
+export async function getPublishedPosts(): Promise<GeneratedPost[]> {
   const now = Date.now();
-  return getAllPosts()
+  return (await getAllPosts())
     .filter(
       (post) =>
         post.status === "published" &&
@@ -54,6 +72,6 @@ export function getPublishedPosts(): GeneratedPost[] {
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
-export function getPostBySlug(slug: string) {
-  return getPublishedPosts().find((post) => post.slug === slug);
+export async function getPostBySlug(slug: string) {
+  return (await getPublishedPosts()).find((post) => post.slug === slug);
 }

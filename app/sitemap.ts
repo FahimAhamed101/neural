@@ -7,7 +7,7 @@ import { getProjectSlug, getProjects } from "@/lib/projects";
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = getPublishedPosts();
+  const posts = await getPublishedPosts();
   const projects = await getProjects();
   return [
     {

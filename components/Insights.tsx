@@ -3,8 +3,8 @@ import { getPublishedPosts } from "@/lib/posts";
 
 const artClasses = ["art-one", "art-two", "art-three"];
 
-export default function Insights() {
-  const posts = getPublishedPosts().slice(0, 3);
+export default async function Insights() {
+  const posts = (await getPublishedPosts()).slice(0, 3);
 
   return (
     <section id="insights" className="insights section-pad">

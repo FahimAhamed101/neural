@@ -2,12 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import process from "node:process";
+import { createPostStore } from "./post-store.mjs";
 
 const root = process.cwd();
 const envPath = path.join(root, ".env");
 if (fs.existsSync(envPath)) process.loadEnvFile(envPath);
-const postsPath = path.join(root, "data", "generated-posts.json");
-const statePath = path.join(root, "data", "content-worker-state.json");
 const apiUrl = process.env.CONTENT_API_URL || "http://127.0.0.1:8000/v1/chat/completions";
 const model = process.env.CONTENT_API_MODEL || "deepseek-expert";
 const pollMs = Math.max(15000, Number(process.env.CONTENT_POLL_MS || 60000));
@@ -15,6 +14,11 @@ const dailyMs = 24 * 60 * 60 * 1000;
 const once = process.argv.includes("--once");
 const fill = process.argv.includes("--fill");
 const healthOnly = process.argv.includes("--health");
+const postStore = createPostStore({
+  root,
+  mongoUri: process.env.MONGODB_URI,
+  databaseName: process.env.MONGODB_DB || "nueral",
+});
 
 function displayApiUrl(value) {
   try {
@@ -350,40 +354,25 @@ Return only valid JSON:
   return post;
 }
 
-function cleanup() {
-  const posts = readJson(postsPath, []);
-  const now = Date.now();
-
-  // SEO articles should remain available so they have time to rank and build authority.
-  // Only remove a post when it has an explicit expiresAt date in the past.
-  const retained = posts.filter((post) => {
-    if (!post.expiresAt) return true;
-    const expiresAt = new Date(post.expiresAt).getTime();
-    return !Number.isFinite(expiresAt) || expiresAt > now;
-  });
-
-  if (retained.length !== posts.length) {
-    writeJson(postsPath, retained);
-    log(`Retention cleanup removed ${posts.length - retained.length} expired post(s).`);
-  }
-  return retained;
+async function cleanup() {
+  return postStore.auditAndCleanup();
 }
 
 async function dailyRun() {
   const cycleStartedAt = Date.now();
-  let posts = cleanup();
+  let posts = await cleanup();
   log("Starting daily generation of 6 targeted posts.");
   const topics = await planTopics(posts);
   for (let index = 0; index < topics.length; index += 1) {
     log(`Generating ${index + 1}/6: ${topics[index].title}`);
     const post = await generateWithRetry(topics[index], posts, `Post ${index + 1}`);
-    if (post) posts = readJson(postsPath, posts);
+    if (post) posts = await postStore.list();
   }
   await fillRecentPublishedPosts(cycleStartedAt);
-  const state = readJson(statePath, {});
+  const state = await postStore.loadState();
   state.lastDailyRun = new Date().toISOString();
   state.nextDailyRun = new Date(Date.now() + dailyMs).toISOString();
-  writeJson(statePath, state);
+  await postStore.saveState(state);
   log("Daily content cycle finished.");
 }
 
@@ -392,7 +381,7 @@ async function generateWithRetry(topic, posts, label) {
     try {
       const post = await createArticle(topic, posts);
       posts.push(post);
-      writeJson(postsPath, posts);
+      await postStore.upsert(post);
       log(`${post.status === "published" ? "Published" : "Saved draft"}: ${post.title}${post.qualityIssues.length ? ` (${post.qualityIssues.join("; ")})` : ""}`);
       return post;
     } catch (error) {
@@ -404,7 +393,7 @@ async function generateWithRetry(topic, posts, label) {
 }
 
 async function fillRecentPublishedPosts(since = Date.now() - dailyMs) {
-  let posts = cleanup();
+  let posts = await cleanup();
   const recentPublished = posts.filter((post) => post.status === "published" && new Date(post.publishedAt).getTime() > since).length;
   let needed = Math.max(0, 6 - recentPublished);
   if (!needed) { log("The latest daily window already contains 6 published posts."); return; }
@@ -414,24 +403,24 @@ async function fillRecentPublishedPosts(since = Date.now() - dailyMs) {
   for (let index = 0; index < ordered.length && needed > 0; index += 1) {
     log(`Generating fill candidate: ${ordered[index].title}`);
     const post = await generateWithRetry(ordered[index], posts, `Fill candidate ${index + 1}`);
-    posts = readJson(postsPath, posts);
+    posts = await postStore.list();
     if (post?.status === "published") needed -= 1;
   }
   log(needed ? `Fill cycle finished with ${needed} published post(s) still missing.` : "Daily published-post target is complete.");
 }
 
 async function tick() {
-  cleanup();
+  await cleanup();
   log(`Checking content API: ${displayApiUrl(apiUrl)}`);
   const apiStatus = await apiOnline();
-  const state = readJson(statePath, {});
+  const state = await postStore.loadState();
   state.apiStatus = {
     online: apiStatus.online,
     detail: apiStatus.detail,
     checkedAt: new Date().toISOString(),
     pollIntervalMs: pollMs,
   };
-  writeJson(statePath, state);
+  await postStore.saveState(state);
   if (!apiStatus.online) {
     log(`API OFFLINE — ${apiStatus.detail}`);
     return;
@@ -454,7 +443,10 @@ async function tick() {
 
 async function main() {
   await tick();
-  if (once || healthOnly) return;
+  if (once || healthOnly) {
+    await postStore.close();
+    return;
+  }
   log(`Worker active. Checking API and schedule every ${Math.round(pollMs / 1000)} seconds.`);
   setInterval(() => tick().catch((error) => log(`Worker error: ${error.message}`)), pollMs);
 }

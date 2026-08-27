@@ -1,10 +1,10 @@
 {
-  "lastDailyRun": "2026-08-26T10:56:08.024Z",
-  "nextDailyRun": "2026-08-27T10:56:08.024Z",
   "apiStatus": {
     "online": true,
     "detail": "health check succeeded",
-    "checkedAt": "2026-08-27T11:20:24.849Z",
+    "checkedAt": "2026-08-27T11:46:05.971Z",
     "pollIntervalMs": 60000
-  }
+  },
+  "lastDailyRun": "2026-08-27T11:41:01.851Z",
+  "nextDailyRun": "2026-08-28T11:41:01.851Z"
 }
