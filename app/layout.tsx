@@ -3,6 +3,8 @@ import { siteConfig } from "@/lib/site-config";
 import ContentApiConsoleMonitor from "@/components/ContentApiConsoleMonitor";
 import GoogleAdsConversionTracker from "@/components/GoogleAdsConversionTracker";
 import "./globals.css";
+import "./capabilities.css";
+import "./markets.css";
 import "./reference.css";
 import "./blog.css";
 import "./service.css";
@@ -111,7 +113,18 @@ export default function RootLayout({
         image: `${siteConfig.url}/og-image.png`,
         email: siteConfig.email,
         telephone: siteConfig.phoneNumber,
-        areaServed: ["Bangladesh", "Worldwide"],
+        areaServed: [
+          "Bangladesh",
+          "Worldwide",
+          "New York City, NY",
+          "Miami, FL",
+          "Los Angeles, CA",
+          "Dallas, TX",
+          "Austin, TX",
+          "Orlando, FL",
+          "Atlanta, GA",
+          "Chicago, IL",
+        ],
         sameAs: [siteConfig.fiverrUrl],
         contactPoint: {
           "@type": "ContactPoint",

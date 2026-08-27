@@ -52,6 +52,19 @@ export default function Footer() {
         </div>
       </div>
 
+      <div className="footer-capability-note">
+        <strong>We develop and repair websites, web apps, and mobile apps.</strong>
+        <span>PHP · Laravel · React · Next.js · Node.js · WordPress · Flutter · React Native · Kotlin · .NET · Django and more</span>
+      </div>
+
+      <div className="footer-markets" aria-label="U.S. markets served remotely">
+        <span>U.S. markets</span>
+        <p>NYC · Miami · Los Angeles · Dallas · Austin · Orlando · Atlanta · Chicago</p>
+        <a href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>
+          Web &amp; app help on Fiverr <span>↗</span>
+        </a>
+      </div>
+
       <div className="footer-bottom">
         <span>
           © {new Date().getFullYear()} {siteConfig.name}

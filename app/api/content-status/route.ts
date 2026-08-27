@@ -1,45 +1,91 @@
-import fs from "node:fs";
-import path from "node:path";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-type WorkerState = {
-  apiStatus?: {
-    online?: boolean;
-    detail?: string;
-    checkedAt?: string;
-    pollIntervalMs?: number;
-  };
+const apiUrl = process.env.CONTENT_API_URL;
+const model = process.env.CONTENT_API_MODEL || "deepseek-expert";
+const cacheDurationMs = 60_000;
+
+type LiveStatus = {
+  online: boolean;
+  checkedAt: string;
+  detail: string;
 };
 
-export function GET() {
+let cachedStatus: LiveStatus | null = null;
+let pendingCheck: Promise<LiveStatus> | null = null;
+
+async function checkContentApi(): Promise<LiveStatus> {
+  const checkedAt = new Date().toISOString();
+
+  if (!apiUrl) {
+    return {
+      online: false,
+      checkedAt,
+      detail: "CONTENT_API_URL is not configured for this deployment.",
+    };
+  }
+
   try {
-    const statePath = path.join(process.cwd(), "data", "content-worker-state.json");
-    const state = JSON.parse(fs.readFileSync(statePath, "utf8")) as WorkerState;
-    const status = state.apiStatus;
-    if (!status?.checkedAt || typeof status.online !== "boolean") {
-      return NextResponse.json(
-        { online: false, checkedAt: null, detail: "The content worker has not completed an API health check yet." },
-        { headers: { "Cache-Control": "no-store" } },
-      );
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "ngrok-skip-browser-warning": "true",
+      },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "user", content: "Reply with only OK" }],
+        temperature: 0,
+        max_tokens: 10,
+      }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(12_000),
+    });
+
+    if (!response.ok) {
+      return {
+        online: false,
+        checkedAt,
+        detail: `The content API returned HTTP ${response.status}.`,
+      };
     }
 
-    const pollInterval = Math.max(15_000, Number(status.pollIntervalMs || 60_000));
-    const stale = Date.now() - new Date(status.checkedAt).getTime() > pollInterval * 3;
-    return NextResponse.json(
-      {
-        online: stale ? false : status.online,
-        checkedAt: status.checkedAt,
-        detail: stale ? "The content worker is not reporting current health checks." : status.detail,
-      },
-      { headers: { "Cache-Control": "no-store" } },
-    );
-  } catch {
-    return NextResponse.json(
-      { online: false, checkedAt: null, detail: "Content API status is unavailable." },
-      { headers: { "Cache-Control": "no-store" } },
-    );
+    const payload = await response.json();
+    const answer = payload?.choices?.[0]?.message?.content;
+
+    return {
+      online: Boolean(answer),
+      checkedAt,
+      detail: answer ? "Live API health check succeeded." : "The API returned an empty health-check response.",
+    };
+  } catch (error) {
+    const detail = error instanceof Error && error.name === "TimeoutError"
+      ? "The live API health check timed out."
+      : "The live API health check could not connect.";
+
+    return { online: false, checkedAt, detail };
   }
+}
+
+async function getStatus() {
+  if (cachedStatus && Date.now() - new Date(cachedStatus.checkedAt).getTime() < cacheDurationMs) {
+    return cachedStatus;
+  }
+
+  pendingCheck ??= checkContentApi();
+  try {
+    cachedStatus = await pendingCheck;
+    return cachedStatus;
+  } finally {
+    pendingCheck = null;
+  }
+}
+
+export async function GET() {
+  const status = await getStatus();
+  return NextResponse.json(status, {
+    headers: { "Cache-Control": "no-store, max-age=0" },
+  });
 }

@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow">Website &amp; app development, repair, maintenance, and support</p>
           <h1>We build &amp; fix<br /><strong>websites and apps</strong></h1>
-          <p className="hero-sub">We build, repair, redesign, and improve business websites, ecommerce stores, web apps, iOS and Android apps, dashboards, APIs, and custom software for clients worldwide.</p>
+          <p className="hero-sub">We build, repair, redesign, and improve every kind of business website and app—from ecommerce and news portals to booking systems, SaaS, and mobile apps—across modern frameworks and inherited codebases.</p>
           <div className="button-row">
             <a className="pill pill-lime" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>WhatsApp <span>↗</span></a>
             <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Hire us on Fiverr <span>↗</span></a>

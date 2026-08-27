@@ -20,9 +20,9 @@ export default function ContentApiConsoleMonitor() {
         if (!active) return;
         const checked = status.checkedAt ? new Date(status.checkedAt).toLocaleString() : "not checked";
         if (status.online) {
-          console.info(`%cCONTENT API ONLINE%c — ${status.detail} (worker check: ${checked})`, "color:#111;background:#b8ff33;padding:3px 7px;border-radius:4px;font-weight:700", "color:inherit");
+          console.info(`%cCONTENT API ONLINE%c — ${status.detail} (live check: ${checked})`, "color:#111;background:#b8ff33;padding:3px 7px;border-radius:4px;font-weight:700", "color:inherit");
         } else {
-          console.error(`CONTENT API OFFLINE — ${status.detail} (worker check: ${checked})`);
+          console.error(`CONTENT API OFFLINE — ${status.detail} (live check: ${checked})`);
         }
       } catch (error) {
         if (active) console.error("CONTENT API OFFLINE — unable to read worker status", error);

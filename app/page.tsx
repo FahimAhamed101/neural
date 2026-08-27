@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -10,18 +11,20 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import Insights from "@/components/Insights";
+import USMarkets from "@/components/USMarkets";
+import WebsiteCapabilities from "@/components/WebsiteCapabilities";
 import { siteConfig } from "@/lib/site-config";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: { absolute: `Web & Mobile App Development Company | ${siteConfig.name}` },
-  description: "Neural IT Limited develops, repairs, redesigns, and maintains websites, web apps, iOS and Android apps, ecommerce stores, and custom software for clients worldwide.",
+  description: "Hire Neural IT on Fiverr for website and app development or repair in NYC, Miami, Los Angeles, Dallas, Austin, Orlando, Atlanta, and Chicago.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     title: `Web & Mobile App Development Company | ${siteConfig.name}`,
-    description: "Website and app development, repair, redesign, maintenance, custom software, and practical AI automation for companies worldwide.",
+    description: "Website and app development, repair, ecommerce, SaaS, booking systems, and AI applications for businesses in major U.S. cities.",
     images: ["/og-image.png"],
   },
 };
@@ -34,11 +37,13 @@ export default function HomePage() {
         <Hero />
         <Stack />
         <Services />
+        <WebsiteCapabilities />
         <Projects />
         <Team />
         <Process />
         <Testimonials />
         <Insights />
+        <USMarkets />
         <ContactCta />
       </main>
       <Footer />
@@ -46,4 +51,3 @@ export default function HomePage() {
     </>
   );
 }
-import type { Metadata } from "next";
