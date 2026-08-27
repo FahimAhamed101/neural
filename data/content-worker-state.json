@@ -2,7 +2,7 @@
   "apiStatus": {
     "online": false,
     "detail": "API response did not contain message content",
-    "checkedAt": "2026-08-27T12:37:44.569Z",
+    "checkedAt": "2026-08-27T12:54:11.230Z",
     "pollIntervalMs": 60000
   },
   "lastDailyRun": "2026-08-26T10:56:08.024Z",
