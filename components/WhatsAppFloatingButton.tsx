@@ -3,10 +3,10 @@ import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 export default function WhatsAppFloatingButton() {
   return (
     <div className="floating-contact-actions" aria-label="Contact Neural IT Limited">
-      <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" aria-label="Chat with Neural IT Limited on WhatsApp" className="floating-contact whatsapp-contact">
+      <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" aria-label="Chat with Neural IT Limited on WhatsApp" className="floating-contact whatsapp-contact" data-google-ads-conversion>
         <WhatsAppGlyph className="h-5 w-5 shrink-0" /><span>WhatsApp</span>
       </a>
-      <a href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" aria-label="Hire Neural IT Limited on Fiverr" className="floating-contact fiverr-contact">
+      <a href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" aria-label="Hire Neural IT Limited on Fiverr" className="floating-contact fiverr-contact" data-google-ads-conversion>
         <FiverrGlyph /><span>Find me on Fiverr</span>
       </a>
     </div>

@@ -93,8 +93,8 @@ export default async function ProjectDetailsPage({ params }: Props) {
             <h1>{title}</h1>
             <p>{description}</p>
             <div className="button-row">
-              <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I viewed the ${title} project and would like to discuss something similar.`)} target="_blank" rel="noopener noreferrer">Build something similar <span>↗</span></a>
-              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer">Find me on Fiverr <span>↗</span></a>
+              <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I viewed the ${title} project and would like to discuss something similar.`)} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Build something similar <span>↗</span></a>
+              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Find me on Fiverr <span>↗</span></a>
               {liveUrl ? <a className="pill pill-outline" href={liveUrl} target="_blank" rel="noopener noreferrer">Visit live project <span>↗</span></a> : null}
             </div></div><dl className="project-quick-facts"><div><dt>Product</dt><dd>{type}</dd></div><div><dt>Expertise</dt><dd>{technologies.slice(0, 3).join(", ")}</dd></div><div><dt>Gallery</dt><dd>{images.length} curated view{images.length === 1 ? "" : "s"}</dd></div><div><dt>Studio</dt><dd>{siteConfig.name}</dd></div></dl></div>
           </header>
@@ -103,7 +103,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
           <section className="project-overview">
             <div><p className="kicker">Project brief</p><h2>Designed as a complete, usable product experience</h2><p>{description}</p><p>The gallery below presents the product interface and key screens delivered for this project. The experience was shaped around clear navigation, consistent interaction patterns, and a technology stack suited to the application.</p></div>
-            <aside><p className="kicker">Project details</p><dl><div><dt>Category</dt><dd>{type}</dd></div><div><dt>Technology</dt><dd>{technologies.length} tools</dd></div><div><dt>Interface views</dt><dd>{images.length}</dd></div></dl><div className="project-tech-list">{technologies.map((item) => <span key={item}>{item}</span>)}</div><a href={getWhatsAppLink(`Hi, I viewed the ${title} case study and would like a project estimate.`)} target="_blank" rel="noopener noreferrer">Request a similar project <span>↗</span></a></aside>
+            <aside><p className="kicker">Project details</p><dl><div><dt>Category</dt><dd>{type}</dd></div><div><dt>Technology</dt><dd>{technologies.length} tools</dd></div><div><dt>Interface views</dt><dd>{images.length}</dd></div></dl><div className="project-tech-list">{technologies.map((item) => <span key={item}>{item}</span>)}</div><a href={getWhatsAppLink(`Hi, I viewed the ${title} case study and would like a project estimate.`)} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Request a similar project <span>↗</span></a></aside>
           </section>
 
           {galleryImages.length ? <section className="project-gallery-section"><div className="project-gallery-heading"><div><p className="kicker">Product gallery</p><h2>Interface details and key screens</h2></div><p>Explore the product through a curated selection of screens from the completed experience.</p></div><div className="project-gallery" aria-label={`${title} screenshots`}>{galleryImages.map((image, index) => <figure key={image}><div><img src={image} alt={`${title} project screen ${index + 2}`} loading="lazy" /></div><figcaption><span>{String(index + 2).padStart(2, "0")}</span><p>{title} interface</p></figcaption></figure>)}</div></section> : null}

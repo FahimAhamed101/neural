@@ -27,6 +27,7 @@ export default function Footer() {
           <a
             href={`mailto:${siteConfig.email}`}
             aria-label="Email Neural IT"
+            data-google-ads-conversion
           >
             em
           </a>
@@ -36,6 +37,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Neural IT on Fiverr"
+            data-google-ads-conversion
           >
             fi
           </a>
@@ -59,7 +61,7 @@ export default function Footer() {
         <span>Dhaka, Bangladesh · Worldwide</span>
 
         <div>
-          <a href={`mailto:${siteConfig.email}`}>
+          <a href={`mailto:${siteConfig.email}`} data-google-ads-conversion>
             Email
           </a>
 
@@ -67,6 +69,7 @@ export default function Footer() {
             href={siteConfig.fiverrUrl}
             target="_blank"
             rel="noopener noreferrer"
+            data-google-ads-conversion
           >
             Fiverr
           </a>

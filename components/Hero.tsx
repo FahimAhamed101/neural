@@ -10,8 +10,8 @@ export default function Hero() {
           <h1>Web &amp; Mobile App<br />Development by <strong>Neural</strong></h1>
           <p className="hero-sub">We design and develop fast websites, iOS and Android apps, custom business software, and practical AI solutions for growing companies worldwide.</p>
           <div className="button-row">
-            <a className="pill pill-lime" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">WhatsApp <span>↗</span></a>
-            <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer">Find me on Fiverr <span>↗</span></a>
+            <a className="pill pill-lime" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>WhatsApp <span>↗</span></a>
+            <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Find me on Fiverr <span>↗</span></a>
             <a className="pill pill-outline" href="#projects">Explore work <span>↓</span></a>
           </div>
         </div>

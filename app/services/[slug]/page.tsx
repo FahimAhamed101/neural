@@ -66,8 +66,8 @@ export default function ServicePage({ params }: Props) {
             <h1>{service.name} for growing businesses</h1>
             <p className="service-lede">{service.introduction}</p>
             <div className="button-row">
-              <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I need help with ${service.shortName}.`)} target="_blank" rel="noopener noreferrer">Discuss your project <span>↗</span></a>
-              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer">Find me on Fiverr <span>↗</span></a>
+              <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I need help with ${service.shortName}.`)} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Discuss your project <span>↗</span></a>
+              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Find me on Fiverr <span>↗</span></a>
             </div>
           </header>
           <div className="service-layout">

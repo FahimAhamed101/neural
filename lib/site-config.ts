@@ -12,6 +12,9 @@ export const siteConfig = {
   locale: "en_US",
   themeColor: "#F7F8FA",
   googleAnalyticsId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "G-BNF8CJG38R",
+  googleAdsId: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18103640487",
+  googleAdsConversionLabel:
+    process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || "NCGWCIzC2J4cEKfDvrhD",
 };
 
 export function getWhatsAppLink(message?: string) {

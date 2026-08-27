@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/site-config";
 import ContentApiConsoleMonitor from "@/components/ContentApiConsoleMonitor";
+import GoogleAdsConversionTracker from "@/components/GoogleAdsConversionTracker";
 import "./globals.css";
 import "./reference.css";
 import "./blog.css";
@@ -96,6 +97,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const analyticsId = JSON.stringify(siteConfig.googleAnalyticsId);
+  const googleAdsId = JSON.stringify(siteConfig.googleAdsId);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -143,12 +145,14 @@ export default function RootLayout({
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', ${analyticsId});`,
+gtag('config', ${analyticsId});
+gtag('config', ${googleAdsId});`,
           }}
         />
       </head>
       <body>
         <ContentApiConsoleMonitor />
+        <GoogleAdsConversionTracker />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
