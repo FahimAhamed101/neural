@@ -65,11 +65,13 @@ export async function getAllPosts(): Promise<GeneratedPost[]> {
 export async function getPublishedPosts(): Promise<GeneratedPost[]> {
   const now = Date.now();
   return (await getAllPosts())
-    .filter(
-      (post) =>
-        post.status === "published" &&
-        (!post.expiresAt || new Date(post.expiresAt).getTime() > now),
-    )
+    .filter((post) => {
+      if (post.status !== "published") return false;
+      if (post.kind === "news" && post.expiresAt && new Date(post.expiresAt).getTime() <= now) {
+        return false;
+      }
+      return true;
+    })
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 

@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Web, mobile, software, and AI solutions",
   description:
     "Neural IT Limited builds, fixes, redesigns, and maintains websites, web apps, mobile apps, ecommerce stores, and custom business software for clients worldwide.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://neuralitlimited.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://neuralitlimited.online").replace(/\/$/, ""),
   lastModified: "2026-08-23",
   whatsappNumber: "8801706617723",
   phoneNumber: "+8801706617723",

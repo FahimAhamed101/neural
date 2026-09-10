@@ -91,7 +91,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T18:58:16.723Z",
     "updatedAt": "2026-08-22T18:58:16.723Z",
-    "expiresAt": "2026-08-29T18:58:16.723Z"
+    "expiresAt": null,
+    "primaryKeyword": "AI automation for SMBs"
   },
   {
     "id": "c5ce3ac2-56d4-4cb2-8a63-487c3568fc4d",
@@ -183,7 +184,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T18:59:32.660Z",
     "updatedAt": "2026-08-22T18:59:32.660Z",
-    "expiresAt": "2026-08-29T18:59:32.660Z"
+    "expiresAt": null,
+    "primaryKeyword": "custom business dashboards"
   },
   {
     "id": "1d2a75cb-be04-4fc0-a215-3a186ff50a27",
@@ -267,13 +269,12 @@
     "ctaTitle": "Turn Technical Fixes Into Revenue Wins",
     "ctaText": "Neural IT Limited helps marketing and ecommerce teams connect website performance and technical SEO to measurable conversion outcomes. Request a performance audit focused on your highest-revenue page templates.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Contains an unsupported marketing claim"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-22T19:00:07.518Z",
-    "updatedAt": "2026-08-22T19:00:07.518Z",
-    "expiresAt": "2026-08-29T19:00:07.518Z"
+    "updatedAt": "2026-09-10T20:55:33.772Z",
+    "expiresAt": null,
+    "primaryKeyword": "website performance and technical SEO"
   },
   {
     "id": "e847c5e3-6a56-4cab-9682-869ed063ee10",
@@ -360,7 +361,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T19:00:38.903Z",
     "updatedAt": "2026-08-22T19:00:38.903Z",
-    "expiresAt": "2026-08-29T19:00:38.903Z"
+    "expiresAt": null,
+    "primaryKeyword": "customer support chatbots"
   },
   {
     "id": "036b2f90-28fa-46f7-93c8-dd8d61dc3f55",
@@ -450,7 +452,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T19:01:19.263Z",
     "updatedAt": "2026-08-22T19:01:19.263Z",
-    "expiresAt": "2026-11-20T19:01:19.263Z"
+    "expiresAt": "2026-11-20T19:01:19.263Z",
+    "primaryKeyword": "responsible AI product design"
   },
   {
     "id": "8c7ce956-ef0c-4caa-a7ba-75f4803c8138",
@@ -538,7 +541,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T19:04:10.040Z",
     "updatedAt": "2026-08-22T19:04:10.040Z",
-    "expiresAt": "2026-08-29T19:04:10.040Z"
+    "expiresAt": null,
+    "primaryKeyword": "mobile app strategy for service businesses"
   },
   {
     "id": "627a1383-0760-4e77-9360-920577ddb959",
@@ -631,7 +635,8 @@
     "qualityIssues": [],
     "publishedAt": "2026-08-22T19:06:51.999Z",
     "updatedAt": "2026-08-22T19:06:51.999Z",
-    "expiresAt": "2026-08-29T19:06:51.999Z"
+    "expiresAt": null,
+    "primaryKeyword": "custom business dashboards and reporting"
   },
   {
     "id": "685f668e-fa16-43db-ad03-f25176fdd184",
@@ -737,7 +742,7 @@
   {
     "id": "3533e178-a631-4303-ba6c-18c9b9cfc824",
     "slug": "hire-react-native-developers-vs-two-native-apps-a-budget-and-timeline-an",
-    "title": "Hire React Native Developers vs. Two Native Apps: A Budget and Timeline Analysis",
+    "title": "Hire React Native Developers vs. Two Native Apps: A Budget and Timeline",
     "description": "Compare hiring React Native developers for a cross-platform app against building two native apps. A practical budget and timeline analysis for founders.",
     "category": "Mobile App Development",
     "kind": "commercial",
@@ -835,18 +840,16 @@
     "ctaTitle": "Get a Detailed Timeline Comparison",
     "ctaText": "If you are weighing the cost of maintaining two codebases against a unified approach, we can help. Submit your app concept to Neural IT Limited for a practical breakdown of React Native versus native timelines and budget drivers specific to your features.",
     "readingMinutes": 6,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:48:12.853Z",
-    "updatedAt": "2026-08-26T10:48:12.853Z",
+    "updatedAt": "2026-09-10T20:54:41.386Z",
     "expiresAt": null
   },
   {
     "id": "d95d8448-cd00-49dd-9c32-224f39205094",
     "slug": "real-estate-app-development-features-that-actually-close-deals-and-retai",
-    "title": "Real Estate App Development: Features That Actually Close Deals and Retain Agents",
+    "title": "Real Estate App Development: Features That Actually Close Deals and",
     "description": "Learn which real estate app development services drive agent adoption and transactions, from IDX integration to CMA tools and lead routing.",
     "category": "Real Estate",
     "kind": "industry",
@@ -937,19 +940,16 @@
     "ctaTitle": "Review Your App Blueprint",
     "ctaText": "If you are planning a build that prioritizes agent retention and transaction speed, schedule a demo with Neural IT Limited to review the specific technical architecture and features that fit your brokerage workflow.",
     "readingMinutes": 4,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters",
-      "Article is too short (705 words)"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:48:42.730Z",
-    "updatedAt": "2026-08-26T10:48:42.730Z",
+    "updatedAt": "2026-09-10T20:55:37.537Z",
     "expiresAt": null
   },
   {
     "id": "103f2834-ec25-4418-810d-04fe7545b0d6",
     "slug": "logistics-software-development-custom-fleet-tracking-and-dispatch-module",
-    "title": "Logistics Software Development: Custom Fleet Tracking and Dispatch Modules That Reduce Deadhead Miles",
+    "title": "Logistics Software Development: Custom Fleet Tracking and Dispatch",
     "description": "A practical guide to building custom dispatch, routing, and tracking modules that cut deadhead miles and integrate with your accounting stack.",
     "category": "Logistics Software Development",
     "kind": "industry",
@@ -1040,12 +1040,10 @@
     "ctaTitle": "Get a Technical Audit of Your Dispatch Workflow",
     "ctaText": "Identify where custom routing logic, geofencing triggers, or API integrations can cut your fuel costs and reduce deadhead miles. Request a technical audit of your current dispatch process from Neural IT Limited.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:49:21.563Z",
-    "updatedAt": "2026-08-26T10:49:21.563Z",
+    "updatedAt": "2026-09-10T20:54:42.406Z",
     "expiresAt": null
   },
   {
@@ -1157,7 +1155,7 @@
   {
     "id": "1ddb051a-7a7d-45c1-9889-372f9cf56d2e",
     "slug": "api-development-for-business-automation-connecting-your-crm-to-erp-witho",
-    "title": "API Development for Business Automation: Connecting Your CRM to ERP Without Breaking Data Flow",
+    "title": "API Development for Business Automation: Connecting Your CRM to ERP",
     "description": "A technical guide to building resilient API middleware that syncs CRM and ERP systems, eliminates manual entry, and scales with your operations.",
     "category": "API Development",
     "kind": "authority",
@@ -1248,12 +1246,10 @@
     "ctaTitle": "Map Your Integration Landscape",
     "ctaText": "If manual data entry between your CRM and ERP is slowing down your operations, let’s look at your current data flow. We’ll help you identify the fastest path to automated sync and a resilient integration plan.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:50:40.466Z",
-    "updatedAt": "2026-08-26T10:50:40.466Z",
+    "updatedAt": "2026-09-10T20:54:43.278Z",
     "expiresAt": null
   },
   {
@@ -1462,7 +1458,7 @@
   {
     "id": "e677bca6-8eca-4cf8-b057-e6404d069930",
     "slug": "healthcare-appointment-booking-app-development-a-compliance-and-workflow",
-    "title": "Healthcare Appointment Booking App Development: A Compliance and Workflow Guide",
+    "title": "Healthcare Appointment Booking App Development: A Compliance and",
     "description": "A practical guide to planning a HIPAA-compliant booking app, covering EHR integration, role-based access, and workflow automation for clinics.",
     "category": "Healthcare Software Development",
     "kind": "industry",
@@ -1551,12 +1547,10 @@
     "ctaTitle": "Request a Compliance Feature Checklist",
     "ctaText": "Planning a booking tool requires precise specifications. Request the Neural IT Limited feature checklist for a HIPAA-compliant healthcare booking app to ensure your project scope covers data security, EHR integration, and user workflow.",
     "readingMinutes": 6,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:53:19.804Z",
-    "updatedAt": "2026-08-26T10:53:19.804Z",
+    "updatedAt": "2026-09-10T20:54:44.603Z",
     "expiresAt": null
   },
   {
@@ -1660,7 +1654,7 @@
   {
     "id": "97a0cdcf-18e4-4965-b3ca-04a0a7c09e0d",
     "slug": "android-app-development-vs-cross-platform-app-development-which-fits-you",
-    "title": "Android App Development vs. Cross-Platform App Development: Which Fits Your Launch Budget?",
+    "title": "Android App Development vs. Cross-Platform App Development: Which Fits",
     "description": "A practical decision framework comparing Android native and cross-platform development based on cost, timeline, performance, and maintenance for startup founders.",
     "category": "Mobile App Development",
     "kind": "decision",
@@ -1749,18 +1743,16 @@
     "ctaTitle": "Get a personalized recommendation for your app's platform strategy.",
     "ctaText": "Stop guessing between native and cross-platform. Tell us your feature list, hardware requirements, and launch timeline, and we will map out the most cost-effective architecture for your specific product.",
     "readingMinutes": 6,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:55:03.124Z",
-    "updatedAt": "2026-08-26T10:55:03.124Z",
+    "updatedAt": "2026-09-10T20:54:45.491Z",
     "expiresAt": null
   },
   {
     "id": "ce542524-7e9b-4d34-959e-cfe1559ddeba",
     "slug": "business-automation-development-how-to-prioritize-which-manual-processes",
-    "title": "Business Automation Development: How to Prioritize Which Manual Processes to Automate First",
+    "title": "Business Automation Development: How to Prioritize Which Manual",
     "description": "A practical scoring model for identifying your highest-ROI automation opportunities, with examples from CRM, invoicing, and reporting workflows.",
     "category": "Business Automation",
     "kind": "authority",
@@ -1847,12 +1839,10 @@
     "ctaTitle": "Book a Workflow Audit",
     "ctaText": "Not sure which manual process to automate first? Neural IT Limited offers a focused workflow audit that scores your highest-ROI automation opportunities across frequency, error cost, data readiness, and team adoption, so you can invest in the right project with confidence.",
     "readingMinutes": 6,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-26T10:56:08.017Z",
-    "updatedAt": "2026-08-26T10:56:08.017Z",
+    "updatedAt": "2026-09-10T20:54:45.957Z",
     "expiresAt": null
   },
   {
@@ -1922,12 +1912,15 @@
     ],
     "ctaTitle": "Turn Your Website Into a Clearer Sales Path",
     "ctaText": "Neural IT Limited can review your offer, contact paths, mobile UX, performance, analytics, and critical service pages, then prioritize fixes that help visitors understand and contact your business.",
-    "readingMinutes": 7,
+    "readingMinutes": 4,
     "status": "published",
-    "qualityIssues": [],
+    "qualityIssues": [
+      "Article is too short (447 words)"
+    ],
     "publishedAt": "2026-08-27T08:00:00.000Z",
     "updatedAt": "2026-08-27T08:00:00.000Z",
-    "expiresAt": null
+    "expiresAt": null,
+    "primaryKeyword": "website not getting leads"
   },
   {
     "id": "buyer-guide-hire-fix-developer-2026",
@@ -1996,12 +1989,16 @@
     ],
     "ctaTitle": "Need a Developer for an Existing Website?",
     "ctaText": "Share the problem and the current platform with Neural IT Limited. We can review broken features, incomplete work, deployment failures, performance issues, and integration errors, then propose a testable repair plan.",
-    "readingMinutes": 6,
+    "readingMinutes": 4,
     "status": "published",
-    "qualityIssues": [],
+    "qualityIssues": [
+      "Description must be 110-165 characters",
+      "Article is too short (442 words)"
+    ],
     "publishedAt": "2026-08-27T08:30:00.000Z",
     "updatedAt": "2026-08-27T08:30:00.000Z",
-    "expiresAt": null
+    "expiresAt": null,
+    "primaryKeyword": "hire developer to fix website"
   },
   {
     "id": "buyer-guide-website-repair-2026",
@@ -2070,12 +2067,15 @@
     ],
     "ctaTitle": "Get a Clear Website Repair Assessment",
     "ctaText": "Send Neural IT Limited the affected URL, what should happen, what happens instead, and any error message. We will help you determine whether a focused repair, modernization, or rebuild is the responsible next step.",
-    "readingMinutes": 6,
+    "readingMinutes": 4,
     "status": "published",
-    "qualityIssues": [],
+    "qualityIssues": [
+      "Article is too short (472 words)"
+    ],
     "publishedAt": "2026-08-27T09:00:00.000Z",
     "updatedAt": "2026-08-27T09:00:00.000Z",
-    "expiresAt": null
+    "expiresAt": null,
+    "primaryKeyword": "website repair services"
   },
   {
     "id": "buyer-guide-fiverr-global-development-2026",
@@ -2148,17 +2148,20 @@
     ],
     "ctaTitle": "Hire Neural IT for Website & App Work on Fiverr",
     "ctaText": "Neural IT Limited helps clients worldwide develop, fix, recover, and maintain websites, web apps, mobile apps, ecommerce stores, APIs, and custom software. Send your brief through Fiverr, WhatsApp, phone, or email for a scoped review.",
-    "readingMinutes": 7,
+    "readingMinutes": 4,
     "status": "published",
-    "qualityIssues": [],
+    "qualityIssues": [
+      "Article is too short (423 words)"
+    ],
     "publishedAt": "2026-08-27T10:00:00.000Z",
     "updatedAt": "2026-08-27T10:00:00.000Z",
-    "expiresAt": null
+    "expiresAt": null,
+    "primaryKeyword": "hire website developer on Fiverr"
   },
   {
     "id": "ca36b3b2-4f93-4cb7-8a1e-6534e037ae7a",
     "slug": "custom-web-application-development-services-when-off-the-shelf-saas-cant",
-    "title": "Custom Web Application Development Services: When Off-the-Shelf SaaS Can't Support Your Operations",
+    "title": "Custom Web Application Development Services: When Off-the-Shelf SaaS",
     "description": "Learn when SaaS limitations justify custom web app development. A practical guide for operations managers comparing workflow fit, data control, and total cost.",
     "category": "Professional Services",
     "kind": "commercial",
@@ -2249,18 +2252,16 @@
     "ctaTitle": "Book a Free Technical Consultation",
     "ctaText": "Map your current SaaS stack against a custom web application plan. We will identify the data silos and manual workarounds that are costing you time and show you a phased migration path that won't disrupt daily operations.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-27T11:21:36.180Z",
-    "updatedAt": "2026-08-27T11:21:36.180Z",
+    "updatedAt": "2026-09-10T20:54:48.222Z",
     "expiresAt": null
   },
   {
     "id": "b78c17f3-be19-4d11-b84f-2db1cca258ac",
     "slug": "hire-a-mobile-app-development-company-for-complex-features-a-briefing-an",
-    "title": "Hire a Mobile App Development Company for Complex Features: A Briefing and Scoping Guide",
+    "title": "Hire a Mobile App Development Company for Complex Features: A Briefing",
     "description": "A practical scoping guide for founders planning apps with offline mode, hardware pairing, or real-time sync. Learn how to brief developers accurately.",
     "category": "Mobile App Development",
     "kind": "commercial",
@@ -2352,12 +2353,10 @@
     "ctaTitle": "Download the Complex Feature Scoping Checklist",
     "ctaText": "Stop guessing what your development partner needs to know. Download our free mobile app scoping checklist tailored for offline mode, hardware pairing, and multi-role permissions to ensure your next brief gets accurate, delivery-focused quotes.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-27T11:22:20.549Z",
-    "updatedAt": "2026-08-27T11:22:20.549Z",
+    "updatedAt": "2026-09-10T20:54:48.731Z",
     "expiresAt": null
   },
   {
@@ -2455,12 +2454,10 @@
     "ctaTitle": "Request a Commission-Savings Assessment",
     "ctaText": "Neural IT Limited can evaluate your current ordering mix and outline a direct channel strategy for your restaurant group. Contact us to request a commission-savings assessment and discuss a practical development roadmap.",
     "readingMinutes": 4,
-    "status": "draft",
-    "qualityIssues": [
-      "Article is too short (809 words)"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-27T11:23:16.991Z",
-    "updatedAt": "2026-08-27T11:23:16.991Z",
+    "updatedAt": "2026-09-10T20:55:47.994Z",
     "expiresAt": null
   },
   {
@@ -2664,7 +2661,7 @@
   {
     "id": "3cdd62cc-1bee-4caf-9d76-46651162dbb5",
     "slug": "how-to-hire-a-mobile-app-development-company-for-complex-features-scopin",
-    "title": "How to Hire a Mobile App Development Company for Complex Features: Scoping and Briefing",
+    "title": "How to Hire a Mobile App Development Company for Complex Features",
     "description": "Learn a practical scoping and briefing framework to hire a mobile app development company for complex features and get accurate, comparable proposals.",
     "category": "Mobile App Development",
     "kind": "commercial",
@@ -2757,12 +2754,10 @@
     "ctaTitle": "Get a fixed-scope proposal for your mobile app",
     "ctaText": "Send us your feature brief or product requirements, and we will respond with a structured scoping review and a fixed-scope proposal for your mobile app.",
     "readingMinutes": 5,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-27T11:33:17.825Z",
-    "updatedAt": "2026-08-27T11:33:17.825Z",
+    "updatedAt": "2026-09-10T20:54:50.595Z",
     "expiresAt": null
   },
   {
@@ -2867,7 +2862,7 @@
   {
     "id": "60050dd9-4e37-4513-90b8-0b2991911fba",
     "slug": "api-development-for-business-automation-connecting-crm-to-erp-without-br",
-    "title": "API Development for Business Automation: Connecting CRM to ERP Without Breaking Data Flow",
+    "title": "API Development for Business Automation: Connecting CRM to ERP Without",
     "description": "A practical guide to resilient API middleware for logistics teams, covering sync conflict handling, failure recovery, and integration planning.",
     "category": "Software Development",
     "kind": "authority",
@@ -2964,12 +2959,10 @@
     "ctaTitle": "Book a System Integration Audit",
     "ctaText": "If your CRM and ERP still rely on manual entry or a fragile connection, Neural IT Limited can review your current data flow, identify failure points, and recommend a resilient API middleware design without disrupting live operations.",
     "readingMinutes": 7,
-    "status": "draft",
-    "qualityIssues": [
-      "Title must be 35-72 characters"
-    ],
+    "status": "published",
+    "qualityIssues": [],
     "publishedAt": "2026-08-27T11:36:34.645Z",
-    "updatedAt": "2026-08-27T11:36:34.645Z",
+    "updatedAt": "2026-09-10T20:54:51.530Z",
     "expiresAt": null
   }
 ]

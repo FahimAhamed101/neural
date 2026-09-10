@@ -88,7 +88,7 @@ export function createPostStore({ root, mongoUri, databaseName = "nueral" }) {
 
     for (const post of [...posts].sort((a, b) => new Date(b.updatedAt || b.publishedAt).getTime() - new Date(a.updatedAt || a.publishedAt).getTime())) {
       let reason = null;
-      if (post.expiresAt && new Date(post.expiresAt).getTime() <= now) reason = "expired";
+      if (post.kind === "news" && post.expiresAt && new Date(post.expiresAt).getTime() <= now) reason = "expired";
       else if (seenSlugs.has(post.slug)) reason = "duplicate-slug";
       else if (post.status === "draft" && now - new Date(post.updatedAt || post.publishedAt).getTime() > 45 * 86_400_000) reason = "stale-failed-draft";
       seenSlugs.add(post.slug);
