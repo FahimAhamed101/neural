@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { siteConfig } from "@/lib/site-config";
 import ContentApiConsoleMonitor from "@/components/ContentApiConsoleMonitor";
 import GoogleAdsConversionTracker from "@/components/GoogleAdsConversionTracker";
@@ -125,7 +126,7 @@ export default function RootLayout({
           "Atlanta, GA",
           "Chicago, IL",
         ],
-        sameAs: [siteConfig.fiverrUrl],
+        sameAs: [siteConfig.fiverrUrl, "https://www.facebook.com/profile.php?id=61591580969494"],
         contactPoint: {
           "@type": "ContactPoint",
           telephone: siteConfig.phoneNumber,
@@ -149,28 +150,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', ${analyticsId});
-gtag('config', ${googleAdsId});`,
-          }}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`} strategy="afterInteractive" />
+        <Script id="ga-init" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${siteConfig.googleAnalyticsId}');
+gtag('config', '${siteConfig.googleAdsId}');`}</Script>
         <ContentApiConsoleMonitor />
         <GoogleAdsConversionTracker />
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         {children}
       </body>
     </html>

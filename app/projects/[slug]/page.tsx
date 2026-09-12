@@ -9,7 +9,7 @@ import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 type Props = { params: { slug: string } };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 86400;
 
 function splitList(value: string) {
   return value.split(",").map((item) => item.trim()).filter(Boolean);

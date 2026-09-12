@@ -15,7 +15,7 @@ import USMarkets from "@/components/USMarkets";
 import WebsiteCapabilities from "@/components/WebsiteCapabilities";
 import { siteConfig } from "@/lib/site-config";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 86400;
 export const metadata: Metadata = {
   title: { absolute: `Web & Mobile App Development Company | ${siteConfig.name}` },
   description: "Hire Neural IT on Fiverr for website and app development or repair in NYC, Miami, Los Angeles, Dallas, Austin, Orlando, Atlanta, and Chicago.",

@@ -4,33 +4,34 @@ import { getPublishedPosts } from "@/lib/posts";
 import { servicePages } from "@/lib/services";
 import { getProjectSlug, getProjects } from "@/lib/projects";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPublishedPosts();
   const projects = await getProjects();
+  const now = new Date();
   return [
     {
       url: siteConfig.url,
-      lastModified: new Date(siteConfig.lastModified),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: posts[0]?.updatedAt ? new Date(posts[0].updatedAt) : new Date(siteConfig.lastModified),
+      lastModified: posts[0]?.updatedAt ? new Date(posts[0].updatedAt) : now,
       changeFrequency: "daily",
       priority: 0.8,
     },
     ...servicePages.map((service) => ({
       url: `${siteConfig.url}/services/${service.slug}`,
-      lastModified: new Date(siteConfig.lastModified),
+      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
     ...projects.filter((project) => project.images).map((project) => ({
       url: `${siteConfig.url}/projects/${getProjectSlug(project)}`,
-      lastModified: new Date(siteConfig.lastModified),
+      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

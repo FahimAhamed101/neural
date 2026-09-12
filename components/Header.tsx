@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { getPhoneLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 const navItems = [
-  { label: "Home", href: "/#top" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Fix website/app", href: "/services/website-repair" },
-  { label: "Work", href: "/#projects" },
-  { label: "Insights", href: "/blog" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/#top", isPage: false },
+  { label: "About", href: "/#about", isPage: false },
+  { label: "Services", href: "/#services", isPage: false },
+  { label: "Fix website/app", href: "/services/website-repair", isPage: true },
+  { label: "Work", href: "/#projects", isPage: false },
+  { label: "Insights", href: "/blog", isPage: true },
+  { label: "Contact", href: "/#contact", isPage: false },
 ];
 
 export default function Header() {
@@ -27,7 +28,10 @@ export default function Header() {
         <span className="brand-mark"><i /><i /><i /></span><span>Neural</span>
       </a>
       <nav className={open ? "nav open" : "nav"} aria-label="Primary">
-        {navItems.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
+        {navItems.map((item) => item.isPage
+          ? <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>
+          : <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
+        )}
       </nav>
       <div className="header-actions">
         <a className="pill pill-lime header-cta" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>WhatsApp <span>↗</span></a>

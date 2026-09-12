@@ -6,7 +6,7 @@ import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { getPublishedPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site-config";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Website and App Development & Repair Guides",

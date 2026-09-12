@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getPhoneLink, siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
@@ -17,10 +18,10 @@ export default function Footer() {
         </a>
 
         <nav>
-          <a href="/services/web-development">Web development</a>
-          <a href="/services/website-repair">Website &amp; app repair</a>
-          <a href="/services/mobile-app-development">App development</a>
-          <a href="/blog">Insights</a>
+          <Link href="/services/web-development">Web development</Link>
+          <Link href="/services/website-repair">Website &amp; app repair</Link>
+          <Link href="/services/mobile-app-development">App development</Link>
+          <Link href="/blog">Insights</Link>
           <a href="/#contact">Contact</a>
         </nav>
 

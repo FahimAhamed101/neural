@@ -52,6 +52,15 @@ export default function ServicePage({ params }: Props) {
           { "@type": "ListItem", position: 3, name: service.shortName, item: pageUrl },
         ],
       },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        mainEntity: service.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      },
     ],
   };
 
