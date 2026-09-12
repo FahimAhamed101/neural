@@ -5,11 +5,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import PostViewTracker from "@/components/PostViewTracker";
-import { getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 type Props = { params: { slug: string } };
 export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug); if (!post) return { title: "Article not found", robots: { index: false, follow: false } }; const url = `/blog/${post.slug}`;
   return { title: post.title, description: post.description, keywords: post.keywords, alternates: { canonical: url }, openGraph: { type: "article", url, title: post.title, description: post.description, publishedTime: post.publishedAt, modifiedTime: post.updatedAt, authors: [siteConfig.name], tags: post.keywords, images: ["/og-image.png"] }, twitter: { card: "summary_large_image", title: post.title, description: post.description, images: ["/og-image.png"] } };

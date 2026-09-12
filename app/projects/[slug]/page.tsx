@@ -11,6 +11,11 @@ type Props = { params: { slug: string } };
 
 export const revalidate = 86400;
 
+export async function generateStaticParams() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ slug: getProjectSlug(project) }));
+}
+
 function splitList(value: string) {
   return value.split(",").map((item) => item.trim()).filter(Boolean);
 }
@@ -39,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: `${title} Project Case Study | ${siteConfig.name}` },
     description: description.slice(0, 160),
     alternates: { canonical: url },
-    openGraph: { type: "article", url, title: `${title} project case study`, description, images: [image] },
+    openGraph: { type: "website", url, title: `${title} project case study`, description, images: [image] },
     twitter: { card: "summary_large_image", title: `${title} project case study`, description, images: [image] },
   };
 }
