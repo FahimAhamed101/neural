@@ -12,7 +12,20 @@ export type Project = {
 };
 
 export function cleanProjectText(value: string) {
-  return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return (
+    value
+      .replace(/<[^>]*>/g, " ")
+      // The source records are hand-entered and often miss the space after a
+      // comma or colon ("restaurant system,shows restaurant menus"). Add it so
+      // the copy reads properly on every project page.
+      .replace(/([,;:])(?=[A-Za-z])/g, "$1 ")
+      // Only after a lowercase word, so "U.S.A" and "Next.js" are left alone.
+      .replace(/(?<=[a-z])([.!?])(?=[A-Z])/g, "$1 ")
+      // Remove whitespace that ended up before punctuation, then collapse runs.
+      .replace(/\s+([,.;:!?])/g, "$1")
+      .replace(/\s{2,}/g, " ")
+      .trim()
+  );
 }
 
 export function formatProjectTitle(value: string) {

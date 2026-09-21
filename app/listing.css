@@ -1,0 +1,1117 @@
+/* =========================================================
+   LISTING / MARKETS / CONVERSION STYLES
+   Loaded last so it can style the routes that previously had
+   no stylesheet at all (/services, /projects, /markets).
+   Design tokens are inherited from reference.css.
+========================================================= */
+
+/* ---------- Anchor offset ----------
+   html{scroll-behavior:smooth} is set, but the header is position:sticky
+   with an 82px height (72px on phones). Without a scroll-margin the browser
+   parks every in-page anchor flush to the viewport top, so the target heading
+   disappears underneath the header. Every nav link that jumps within the
+   homepage (/#services, /#projects, /#enquiry) was affected. */
+
+:root {
+  --anchor-offset: 104px;
+}
+
+[id] {
+  scroll-margin-top: var(--anchor-offset);
+}
+
+/* ---------- Sticky mobile CTA clearance ----------
+   Below 700px the CTA bar is position:fixed to the bottom of the viewport
+   with no compensating space, so it sat on top of the last ~68px of every
+   page — the footer copyright and the Privacy / Terms / Call / Email links. */
+
+@media (max-width: 700px) {
+  :root {
+    --anchor-offset: 92px;
+  }
+
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ---------- Shared listing hero ---------- */
+
+.services-listing-page,
+.projects-listing-page,
+.markets-page {
+  background: #fff;
+}
+
+.services-hero,
+.projects-hero,
+.markets-hero {
+  padding: 108px var(--content-pad) 84px;
+  background: linear-gradient(145deg, #fff 0%, #f7f8f3 72%, #efffc3 100%);
+}
+
+.services-hero h1,
+.projects-hero h1,
+.markets-hero h1 {
+  max-width: 980px;
+  margin: 20px 0 26px;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 6vw, 88px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+}
+
+.services-hero > p:last-child,
+.projects-hero > p:last-child,
+.markets-hero > p:last-child {
+  max-width: 760px;
+  margin: 0;
+  color: #565a56;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+/* ---------- Service cards ---------- */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 90px var(--content-pad) 110px;
+}
+
+.service-card {
+  display: flex;
+  min-width: 0;
+  border: 1px solid #e0e3dd;
+  border-radius: 14px;
+  background: #f9faf7;
+  transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.service-card:hover {
+  border-color: #c8ff1a;
+  background: #fff;
+  transform: translateY(-5px);
+}
+
+.service-card > a {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 32px 30px 28px;
+}
+
+.service-card-kicker {
+  color: #6b6e6b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.service-card h3 {
+  margin: 22px 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.1vw, 31px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.service-card > a > p {
+  flex: 1;
+  margin: 0 0 28px;
+  color: #676b66;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-top: 20px;
+  border-top: 1px solid #e4e7e0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.service-card-link span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: #101310;
+  border-radius: 50%;
+  background: #c8ff1a;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover .service-card-link span {
+  transform: translate(2px, -2px);
+}
+
+/* ---------- Projects listing ---------- */
+
+.projects-listing-page .project-grid {
+  padding: 90px var(--content-pad) 0;
+}
+
+.projects-listing-page .project-grid .project-card {
+  padding: 0;
+  color: inherit;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.projects-listing-page .project-grid .project-card > a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid #e0e3dd;
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.projects-listing-page .project-grid .project-card > a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 55px rgba(18, 22, 19, 0.1);
+}
+
+.projects-listing-page .project-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+}
+
+.projects-listing-page .project-grid .project-card > a > span {
+  display: block;
+  padding: 20px 22px 22px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.project-full-list {
+  padding: 90px var(--content-pad) 110px;
+}
+
+.project-full-list h2 {
+  margin-bottom: 30px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.2vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.project-full-list ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #e4e7e0;
+}
+
+.project-full-list li {
+  border-bottom: 1px solid #e4e7e0;
+}
+
+.project-full-list li a {
+  display: block;
+  padding: 17px 2px;
+  color: #4d514d;
+  font-size: 14px;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.project-full-list li a:hover {
+  padding-left: 8px;
+  color: #111;
+}
+
+/* ---------- Markets ---------- */
+
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0 var(--content-pad) 40px;
+}
+
+.region-block {
+  margin-top: 56px;
+}
+
+.markets-page .region-block {
+  padding: 0 var(--content-pad);
+}
+
+/* Inside the homepage section, horizontal padding already comes from
+   .section-pad, so the region blocks must not add it twice. */
+.markets-section .region-block {
+  padding: 0;
+}
+
+.region-block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e4e7e0;
+}
+
+.region-block-head h2,
+.region-block-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.region-block-head h2 a:hover,
+.region-block-head h3 a:hover {
+  color: #557700;
+}
+
+.region-block-head p {
+  max-width: 480px;
+  margin: 0;
+  color: #6b6f6a;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.markets-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 70px;
+  padding: 34px var(--content-pad);
+  border-radius: 14px;
+  background: #0c0e0f;
+}
+
+.markets-section .markets-cta {
+  padding: 34px 36px;
+  margin-top: 64px;
+}
+
+.markets-cta p {
+  max-width: 620px;
+  margin: 0;
+  color: #c9cec8;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.market-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 44px;
+  color: #737673;
+  font-size: 12px;
+}
+
+.market-breadcrumb span {
+  display: inline-flex;
+  gap: 9px;
+}
+
+.market-breadcrumb i {
+  font-style: normal;
+  color: #6b6e6b;
+}
+
+.market-breadcrumb a:hover {
+  color: #111;
+}
+
+.market-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 34px;
+}
+
+.market-detail p + h2 {
+  margin-top: 52px;
+}
+
+/* ---------- Footer region links ---------- */
+
+.footer-regions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  padding: 30px 0;
+  border-top: 1px solid #202321;
+}
+
+.footer-regions > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-region-name {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-region-name:hover {
+  color: #c8ff1a;
+}
+
+.footer-regions > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.footer-regions > div > div a {
+  color: #6b6e6b;
+  font-size: 12px;
+}
+
+.footer-regions > div > div a:hover {
+  color: #fff;
+}
+
+/* ---------- Hero proof line ---------- */
+
+.hero-proof {
+  margin: 22px 0 0;
+  color: #7a7d79;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Utilities ---------- */
+
+.portfolio-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 26px;
+  margin-top: 21px;
+}
+
+.portfolio-more {
+  margin-top: 46px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Keep the closing CTA clear of the footer on the listing pages. */
+.services-listing-page .markets-cta,
+.projects-listing-page .markets-cta,
+.markets-page .markets-cta {
+  margin-bottom: 110px;
+}
+
+
+
+.city-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.city-list li {
+  border-bottom: 1px solid #eceee9;
+}
+
+.city-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 18px 15px 0;
+  color: #3f433f;
+  font-size: 14px;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.city-list a:hover {
+  padding-left: 8px;
+  color: #111;
+}
+
+.city-list small {
+  color: #6b6e6b;
+  font-size: 11px;
+}
+
+.market-detail {
+  padding: 100px var(--content-pad) 110px;
+}
+
+.market-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) 330px;
+  align-items: start;
+  justify-content: space-between;
+  gap: 90px;
+}
+
+.market-detail h2 {
+  margin: 16px 0 26px;
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.6vw, 54px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.market-detail p {
+  color: #525652;
+  font-size: 18px;
+  line-height: 1.82;
+}
+
+.market-detail p + p {
+  margin-top: 20px;
+}
+
+.market-facts {
+  position: sticky;
+  top: 110px;
+  padding: 28px;
+  border: 1px solid #e4e7e0;
+  border-radius: 14px;
+  background: #fafbf8;
+}
+
+.market-facts dl {
+  margin: 0 0 24px;
+}
+
+.market-facts dt {
+  color: #7b7f7b;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.market-facts dd {
+  margin: 6px 0 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e4e7e0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.market-facts dd:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.industry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 30px 0 0;
+}
+
+.industry-tags span {
+  padding: 8px 12px;
+  color: #4f534f;
+  border: 1px solid #e0e3dd;
+  border-radius: 999px;
+  background: #f7f8f5;
+  font-size: 12px;
+}
+
+/* ---------- Trust bar ---------- */
+
+.trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding: 0;
+  background: #e4e7e0;
+  border-top: 1px solid #e4e7e0;
+  border-bottom: 1px solid #e4e7e0;
+}
+
+.trust-bar > div {
+  padding: 34px var(--content-pad) 34px 0;
+  padding-left: 26px;
+  background: #fff;
+}
+
+.trust-bar strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.trust-bar span {
+  display: block;
+  margin-top: 8px;
+  color: #6b6f6a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq-section {
+  padding: 100px var(--content-pad);
+  background: #fff;
+}
+
+.faq-head {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  align-items: end;
+  gap: 70px;
+  margin-bottom: 44px;
+}
+
+.faq-head h2 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+.faq-head > p {
+  margin: 0;
+  color: #6b6f6a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq-list {
+  max-width: 940px;
+  border-top: 1px solid #e4e7e0;
+}
+
+.faq-list details {
+  border-bottom: 1px solid #e4e7e0;
+}
+
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary span {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #111;
+  border-radius: 50%;
+  font-size: 14px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.faq-list details[open] summary span {
+  background: #c8ff1a;
+  transform: rotate(45deg);
+}
+
+.faq-list details p {
+  max-width: 780px;
+  margin: 0;
+  padding: 0 54px 26px 0;
+  color: #525652;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* ---------- Enquiry form ---------- */
+
+.enquiry-section {
+  padding: 100px var(--content-pad) 110px;
+  background: #0b0d0e;
+  color: #fff;
+}
+
+.enquiry-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 80px;
+}
+
+.enquiry-intro h2 {
+  margin: 16px 0 24px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.05em;
+}
+
+.enquiry-intro > p {
+  max-width: 520px;
+  color: #aeb3ad;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.enquiry-promises {
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.enquiry-promises li {
+  display: flex;
+  gap: 12px;
+  padding: 13px 0;
+  color: #c9cec8;
+  border-top: 1px solid #23262a;
+  font-size: 14px;
+}
+
+.enquiry-promises li:last-child {
+  border-bottom: 1px solid #23262a;
+}
+
+.enquiry-promises b {
+  color: #c8ff1a;
+  font-weight: 700;
+}
+
+.enquiry-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 34px;
+  border: 1px solid #262a2e;
+  border-radius: 16px;
+  background: #131619;
+}
+
+.enquiry-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.enquiry-field.full {
+  grid-column: 1 / -1;
+}
+
+.enquiry-field label {
+  color: #6b6e6b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.enquiry-field input,
+.enquiry-field select,
+.enquiry-field textarea {
+  width: 100%;
+  padding: 13px 14px;
+  color: #fff;
+  border: 1px solid #2f3438;
+  border-radius: 9px;
+  background: #0b0d0e;
+  font: inherit;
+  font-size: 14px;
+}
+
+.enquiry-field textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.enquiry-field input:focus-visible,
+.enquiry-field select:focus-visible,
+.enquiry-field textarea:focus-visible {
+  border-color: #c8ff1a;
+  outline: 2px solid #c8ff1a;
+  outline-offset: 1px;
+}
+
+.enquiry-field input[aria-invalid="true"],
+.enquiry-field textarea[aria-invalid="true"],
+.enquiry-field select[aria-invalid="true"] {
+  border-color: #ff6a5a;
+}
+
+.enquiry-error {
+  color: #ff9a8d;
+  font-size: 12px;
+}
+
+.enquiry-actions {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.enquiry-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #6b6e6b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.enquiry-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 13px 15px;
+  border: 1px solid #2f4a2a;
+  border-radius: 9px;
+  background: #16210f;
+  color: #cfe9a8;
+  font-size: 13px;
+}
+
+.enquiry-status.is-error {
+  border-color: #5a2c26;
+  background: #24120f;
+  color: #ffb3a6;
+}
+
+.enquiry-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Enquiry handoff ----------
+   Shown when the server has no mail transport configured and the enquiry has
+   to be finished in the visitor's own WhatsApp or mail client. It has to read
+   as the end of the form, not as another field. */
+
+.enquiry-handoff {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding: 24px 24px 20px;
+  border: 1px solid #2f4a2a;
+  border-left: 4px solid #25d366;
+  border-radius: 10px;
+  background: #101a12;
+}
+
+.enquiry-handoff-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 0 0 20px;
+  color: #e8f4e4;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.enquiry-handoff-title b {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  color: #08120a;
+  border-radius: 50%;
+  background: #25d366;
+  font-size: 13px;
+}
+
+.enquiry-handoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill-whatsapp {
+  min-height: 48px;
+  padding: 0 22px;
+  color: #08120a;
+  background: #25d366;
+  font-size: 14px;
+}
+
+.pill-whatsapp span {
+  color: #25d366;
+  background: #08120a;
+}
+
+.enquiry-handoff .pill-outline {
+  min-height: 48px;
+  padding: 0 20px;
+  color: #e8f4e4;
+  border-color: #3a4a3a;
+  background: transparent;
+  font-size: 14px;
+}
+
+.enquiry-handoff .pill-outline span {
+  color: #0c0e0f;
+  background: #e8f4e4;
+}
+
+.enquiry-handoff-hint {
+  margin: 16px 0 0;
+  color: #9fb29a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.enquiry-restart {
+  padding: 0;
+  color: #8b8f8a;
+  border: 0;
+  border-bottom: 1px solid #3a3f3a;
+  background: none;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.enquiry-restart:hover {
+  color: #e8f4e4;
+}
+
+/* ---------- Sticky mobile CTA ---------- */
+
+.mobile-cta-bar {
+  display: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1200px) {
+  .service-grid,
+  .markets-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .city-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .trust-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .market-detail-grid,
+  .enquiry-layout,
+  .faq-head {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .market-facts {
+    position: static;
+  }
+
+  .project-full-list ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .region-block-head {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .services-hero,
+  .projects-hero,
+  .markets-hero {
+    padding-top: 76px;
+    padding-bottom: 62px;
+  }
+
+  .services-hero h1,
+  .projects-hero h1,
+  .markets-hero h1 {
+    font-size: 42px;
+  }
+
+  .services-hero > p:last-child,
+  .projects-hero > p:last-child,
+  .markets-hero > p:last-child {
+    font-size: 16px;
+  }
+
+  .service-grid,
+  .markets-grid,
+  .projects-listing-page .project-grid,
+  .project-full-list,
+  .market-detail,
+  .faq-section,
+  .enquiry-section {
+    padding-top: 62px;
+    padding-bottom: 70px;
+  }
+
+  .service-grid,
+  .markets-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .city-list,
+  .project-full-list ul {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-bar > div {
+    padding: 24px var(--content-pad) 24px 0;
+    padding-left: 20px;
+  }
+
+  .enquiry-form {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .faq-list summary {
+    font-size: 16px;
+  }
+
+  .faq-list details p {
+    padding-right: 20px;
+  }
+
+  .market-detail p {
+    font-size: 16px;
+  }
+
+  .mobile-cta-bar {
+    position: fixed;
+    z-index: 70;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 9px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid #23262a;
+    background: rgba(11, 13, 14, 0.97);
+    backdrop-filter: blur(12px);
+  }
+
+  .mobile-cta-bar a {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .mobile-cta-bar .bar-whatsapp {
+    color: #08120a;
+    background: #25d366;
+  }
+
+  .mobile-cta-bar .bar-call {
+    color: #fff;
+    border: 1px solid #3a3f3a;
+    background: #1a1d20;
+  }
+
+  /* The sticky bar already offers WhatsApp and call, so the floating
+     stack is hidden on phones instead of covering page content. */
+  .floating-contact-actions {
+    display: none;
+  }
+
+  .region-block-head h2,
+  .region-block-head h3 {
+    font-size: 26px;
+  }
+
+  .markets-cta,
+  .markets-section .markets-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 26px 22px;
+    margin-top: 44px;
+  }
+
+  .market-breadcrumb {
+    margin-bottom: 30px;
+  }
+
+  .market-actions {
+    margin-top: 26px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-regions {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+

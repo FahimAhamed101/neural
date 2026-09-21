@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import StickyMobileCta from "@/components/StickyMobileCta";
 import { getServiceBySlug, servicePages } from "@/lib/services";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
@@ -76,7 +77,7 @@ export default function ServicePage({ params }: Props) {
             <p className="service-lede">{service.introduction}</p>
             <div className="button-row">
               <a className="pill pill-lime" href={getWhatsAppLink(`Hi, I need help with ${service.shortName}.`)} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Discuss your project <span>↗</span></a>
-              <a className="pill pill-fiverr" href={siteConfig.fiverrUrl} target="_blank" rel="noopener noreferrer" data-google-ads-conversion>Hire us on Fiverr <span>↗</span></a>
+              <Link className="pill pill-outline" href="/#enquiry">Get a fixed quote <span>↗</span></Link>
             </div>
           </header>
           <div className="service-layout">
@@ -96,6 +97,7 @@ export default function ServicePage({ params }: Props) {
       </main>
       <Footer />
       <WhatsAppFloatingButton />
+      <StickyMobileCta />
     </>
   );
 }

@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
+import { marketRegions } from "@/lib/markets";
+import { servicePages } from "@/lib/services";
 import ContentApiConsoleMonitor from "@/components/ContentApiConsoleMonitor";
 import GoogleAdsConversionTracker from "@/components/GoogleAdsConversionTracker";
 import "./globals.css";
@@ -10,6 +13,20 @@ import "./reference.css";
 import "./blog.css";
 import "./service.css";
 import "./project.css";
+import "./listing.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+});
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
@@ -22,19 +39,26 @@ export const metadata: Metadata = {
   applicationName: siteConfig.name,
   category: "technology",
   title: {
-    default: `${siteConfig.name} | Web, Mobile & AI Solutions`,
+    default: `${siteConfig.name} | Web, Mobile & AI Development for Europe, Asia & the Middle East`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
     "Neural IT Limited",
-    "software company Bangladesh",
-    "website development company",
-    "mobile app development",
-    "business software development",
-    "Next.js development",
-    "React development agency",
-    "SEO optimized websites",
+    "software development company for Europe",
+    "web development company for Asia",
+    "website development Dubai",
+    "app development Singapore",
+    "website development London",
+    "custom software development Middle East",
+    "hire remote development team",
+    "website repair and maintenance service",
+    "Next.js development agency",
+    "Flutter app development company",
+    "React Native development company",
+    "Arabic RTL website development",
+    "GDPR compliant website development",
+    "ecommerce development company",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
@@ -101,6 +125,21 @@ export default function RootLayout({
 }) {
   const analyticsId = JSON.stringify(siteConfig.googleAnalyticsId);
   const googleAdsId = JSON.stringify(siteConfig.googleAdsId);
+
+  /**
+   * Area served is kept at region level here on purpose.
+   *
+   * Repeating all 14 city objects inside the Organization, the
+   * ProfessionalService and each of the five service offers produced 98
+   * duplicate "City" nodes in the homepage markup. That bloats the payload and
+   * reads as schema spam. City-level targeting belongs on the city pages,
+   * which each carry their own Service schema with a single areaServed.
+   */
+  const areaServed = marketRegions.map((region) => ({
+    "@type": "AdministrativeArea",
+    name: region.name,
+  }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -108,32 +147,32 @@ export default function RootLayout({
         "@type": "Organization",
         "@id": `${siteConfig.url}/#organization`,
         name: siteConfig.name,
+        legalName: siteConfig.name,
         description: siteConfig.description,
         url: siteConfig.url,
-        logo: `${siteConfig.url}/icon-64.png`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/icon-64.png`,
+        },
         image: `${siteConfig.url}/og-image.png`,
         email: siteConfig.email,
         telephone: siteConfig.phoneNumber,
-        areaServed: [
-          "Bangladesh",
-          "Worldwide",
-          "New York City, NY",
-          "Miami, FL",
-          "Los Angeles, CA",
-          "Dallas, TX",
-          "Austin, TX",
-          "Orlando, FL",
-          "Atlanta, GA",
-          "Chicago, IL",
-        ],
-        sameAs: [siteConfig.fiverrUrl, "https://www.facebook.com/profile.php?id=61591580969494"],
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: siteConfig.phoneNumber,
-          contactType: "sales",
-          availableLanguage: ["English", "Bengali"],
-          areaServed: "Worldwide",
+        foundingLocation: {
+          "@type": "Place",
+          name: "Dhaka, Bangladesh",
         },
+        areaServed,
+        knowsLanguage: siteConfig.availableLanguages,
+        sameAs: [siteConfig.fiverrUrl, siteConfig.facebookUrl],
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            telephone: siteConfig.phoneNumber,
+            contactType: "sales",
+            availableLanguage: siteConfig.availableLanguages,
+            areaServed: siteConfig.targetRegions,
+          },
+        ],
       },
       {
         "@type": "WebSite",
@@ -144,11 +183,47 @@ export default function RootLayout({
         inLanguage: "en",
         publisher: { "@id": `${siteConfig.url}/#organization` },
       },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${siteConfig.url}/#service`,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+        image: `${siteConfig.url}/og-image.png`,
+        telephone: siteConfig.phoneNumber,
+        email: siteConfig.email,
+        priceRange: "$$",
+        areaServed,
+        availableLanguage: siteConfig.availableLanguages,
+        provider: { "@id": `${siteConfig.url}/#organization` },
+        knowsAbout: [
+          "Website development",
+          "Website and app repair",
+          "Mobile app development",
+          "Custom software development",
+          "AI automation",
+          "Technical SEO",
+          "Ecommerce development",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Development services",
+          itemListElement: servicePages.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.name,
+              description: service.metaDescription,
+              url: `${siteConfig.url}/services/${service.slug}`,
+            },
+          })),
+        },
+      },
     ],
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />

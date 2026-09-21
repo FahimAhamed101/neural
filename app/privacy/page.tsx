@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import StickyMobileCta from "@/components/StickyMobileCta";
 import { siteConfig } from "@/lib/site-config";
 
 export const revalidate = 86400;
@@ -53,6 +54,7 @@ export default function PrivacyPage() {
       </main>
       <Footer />
       <WhatsAppFloatingButton />
+      <StickyMobileCta />
     </>
   );
 }

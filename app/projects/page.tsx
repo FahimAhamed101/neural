@@ -3,7 +3,9 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import StickyMobileCta from "@/components/StickyMobileCta";
 import { getProjects, getProjectSlug } from "@/lib/projects";
+import { imageWidths, optimizedImage } from "@/lib/images";
 import { siteConfig } from "@/lib/site-config";
 
 export const revalidate = 86400;
@@ -25,7 +27,7 @@ export default async function ProjectsPage() {
         <section className="projects-hero">
           <p className="kicker">Selected work</p>
           <h1>Portfolio</h1>
-          <p>Case studies spanning ecommerce, mobile apps, SaaS, dashboards, and custom software for businesses in major U.S. markets and worldwide.</p>
+          <p>Case studies spanning ecommerce, mobile apps, SaaS, dashboards, and custom software for businesses across Europe, Asia and the Middle East.</p>
         </section>
         {featured.length ? (
           <section className="project-grid" aria-labelledby="featured-list">
@@ -35,7 +37,14 @@ export default async function ProjectsPage() {
               return (
                 <article key={project.id} className="project-card">
                   <Link href={`/projects/${getProjectSlug(project)}`}>
-                    {image ? <img src={image} alt={title} loading="lazy" /> : null}
+                    {image ? (
+                      <img
+                        src={optimizedImage(image, imageWidths.card)}
+                        alt={title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : null}
                     <span>{title}</span>
                   </Link>
                 </article>
@@ -60,6 +69,7 @@ export default async function ProjectsPage() {
       </main>
       <Footer />
       <WhatsAppFloatingButton />
+      <StickyMobileCta />
     </>
   );
 }

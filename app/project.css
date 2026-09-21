@@ -28,7 +28,7 @@
 .project-overview aside{position:sticky;top:110px;padding:28px;border:1px solid var(--line);border-radius:14px;background:#fafbf8;box-shadow:0 16px 44px rgba(16,18,18,.05)}
 .project-overview aside>dl{margin:19px 0 22px;border-top:1px solid var(--line)}
 .project-overview aside>dl>div{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line)}
-.project-overview aside dt{color:#7b7f7b;font-size:10px;text-transform:uppercase}.project-overview aside dd{font-size:12px;font-weight:600;text-align:right}
+.project-overview aside dt{color:#6b6e6b;font-size:10px;text-transform:uppercase}.project-overview aside dd{font-size:12px;font-weight:600;text-align:right}
 .project-tech-list{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
 .project-tech-list span{padding:8px 11px;border-radius:999px;background:#ecefe8;font-size:10px}
 .project-overview aside>a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;color:#111;border-radius:8px;background:var(--lime);font-size:11px;font-weight:700}

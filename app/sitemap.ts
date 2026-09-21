@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import { getPublishedPosts } from "@/lib/posts";
 import { servicePages } from "@/lib/services";
 import { getProjectSlug, getProjects } from "@/lib/projects";
+import { marketCities, marketRegions } from "@/lib/markets";
 
 export const revalidate = 3600;
 
@@ -10,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getPublishedPosts();
   const projects = await getProjects();
   const now = new Date();
+
   return [
     {
       url: siteConfig.url,
@@ -18,22 +20,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/blog`,
-      lastModified: posts[0]?.updatedAt ? new Date(posts[0].updatedAt) : now,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
       url: `${siteConfig.url}/services`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${siteConfig.url}/projects`,
+      url: `${siteConfig.url}/markets`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     ...servicePages.map((service) => ({
       url: `${siteConfig.url}/services/${service.slug}`,
@@ -41,17 +37,55 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
-    ...projects.filter((project) => project.images).map((project) => ({
-      url: `${siteConfig.url}/projects/${getProjectSlug(project)}`,
+    ...marketRegions.map((region) => ({
+      url: `${siteConfig.url}/markets/${region.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+    ...marketCities.map((city) => ({
+      url: `${siteConfig.url}/markets/${city.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    {
+      url: `${siteConfig.url}/projects`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...projects
+      .filter((project) => project.images)
+      .map((project) => ({
+        url: `${siteConfig.url}/projects/${getProjectSlug(project)}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.75,
+      })),
+    {
+      url: `${siteConfig.url}/blog`,
+      lastModified: posts[0]?.updatedAt ? new Date(posts[0].updatedAt) : now,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
     ...posts.map((post) => ({
       url: `${siteConfig.url}/blog/${post.slug}`,
       lastModified: new Date(post.updatedAt),
       changeFrequency: "weekly" as const,
       priority: post.kind === "news" ? 0.7 : 0.75,
     })),
+    {
+      url: `${siteConfig.url}/privacy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${siteConfig.url}/terms`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 }
