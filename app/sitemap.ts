@@ -87,5 +87,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: `${siteConfig.url}/child-safety-standards`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
   ];
 }

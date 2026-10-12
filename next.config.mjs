@@ -21,6 +21,25 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/child-safety",
+        destination: "/child-safety-standards",
+        permanent: true,
+      },
+      {
+        source: "/child-safety-policy",
+        destination: "/child-safety-standards",
+        permanent: true,
+      },
+      {
+        source: "/childsafety",
+        destination: "/child-safety-standards",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
