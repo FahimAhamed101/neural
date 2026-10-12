@@ -8,9 +8,23 @@ import { siteConfig } from "@/lib/site-config";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: `Privacy Policy | ${siteConfig.name}`,
   description: `Privacy policy for ${siteConfig.name}. Learn how we collect, use, and protect your personal information when you visit our website or use our services.`,
+  keywords: ["privacy policy", "data protection", "Neural IT Limited privacy", "GDPR compliance"],
   alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: `Privacy Policy | ${siteConfig.name}`,
+    description: `Privacy policy and data protection standards for ${siteConfig.name}.`,
+    url: "/privacy",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Privacy Policy | ${siteConfig.name}`,
+    description: `Privacy policy and data protection standards for ${siteConfig.name}.`,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function PrivacyPage() {

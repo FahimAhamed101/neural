@@ -11,10 +11,34 @@ import { siteConfig } from "@/lib/site-config";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: `Case studies and portfolio projects by ${siteConfig.name}. Flutter, React Native, ecommerce, SaaS, dashboards, and custom software built for clients worldwide.`,
+  title: `Web & Mobile App Portfolio — Case Studies | ${siteConfig.name}`,
+  description: `Case studies and portfolio projects by ${siteConfig.name}. Explore custom websites, Flutter & React Native mobile apps, ecommerce stores, and SaaS products.`,
+  keywords: [
+    "mobile app portfolio",
+    "web development portfolio",
+    "Flutter app examples",
+    "React Native app projects",
+    "ecommerce website portfolio",
+    "custom software case studies",
+    "hire app developers portfolio",
+    "web application examples",
+  ],
   alternates: { canonical: "/projects" },
-  openGraph: { title: "Portfolio | Projects by Neural IT Limited", description: "Case studies covering ecommerce, mobile apps, SaaS, dashboards, and custom software built for businesses worldwide.", url: "/projects", type: "website", images: ["/og-image.png"] },
+  openGraph: {
+    title: `Web & Mobile App Portfolio | ${siteConfig.name}`,
+    description:
+      "Case studies covering ecommerce, mobile apps, SaaS, dashboards, and custom software built for businesses worldwide.",
+    url: "/projects",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Web & Mobile App Portfolio | ${siteConfig.name}`,
+    description:
+      "Case studies covering ecommerce, mobile apps, SaaS, dashboards, and custom software built for businesses worldwide.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default async function ProjectsPage() {

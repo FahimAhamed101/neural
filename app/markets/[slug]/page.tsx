@@ -30,12 +30,26 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     return {
       title: region.seoTitle,
       description: region.seoDescription,
+      keywords: [
+        `website development ${region.name}`,
+        `app development company ${region.name}`,
+        `hire software developers ${region.name}`,
+        `custom software engineering ${region.name}`,
+        `mobile app developers ${region.name}`,
+        "hire remote development team",
+      ],
       alternates: { canonical: `/markets/${region.slug}` },
       openGraph: {
         title: `${region.seoTitle} | ${siteConfig.name}`,
         description: region.seoDescription,
         url: `/markets/${region.slug}`,
         type: "website",
+        images: ["/og-image.png"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${region.seoTitle} | ${siteConfig.name}`,
+        description: region.seoDescription,
         images: ["/og-image.png"],
       },
     };
@@ -48,12 +62,26 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     return {
       title,
       description,
+      keywords: [
+        `website development ${city.city}`,
+        `app development ${city.city}`,
+        `mobile app developer ${city.city}`,
+        `hire web developer ${city.city}`,
+        `software company ${city.city}`,
+        `create website ${city.country}`,
+      ],
       alternates: { canonical: `/markets/${city.slug}` },
       openGraph: {
         title: `${title} | ${siteConfig.name}`,
         description,
         url: `/markets/${city.slug}`,
         type: "website",
+        images: ["/og-image.png"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${title} | ${siteConfig.name}`,
+        description,
         images: ["/og-image.png"],
       },
     };

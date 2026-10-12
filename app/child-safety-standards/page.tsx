@@ -14,9 +14,29 @@ type PageProps = {
 };
 
 export const metadata: Metadata = {
-  title: "Child Safety Standards",
+  title: `Child Safety Standards | ${siteConfig.name}`,
   description: `Child safety standards, CSAE/CSAM prevention protocols, reporting mechanisms, and enforcement procedures for applications published by ${siteConfig.name}.`,
+  keywords: [
+    "child safety standards",
+    "Google Play child safety policy",
+    "CSAM prevention policy",
+    "CSAE child protection",
+    "Neural IT Limited child safety",
+  ],
   alternates: { canonical: "/child-safety-standards" },
+  openGraph: {
+    title: `Child Safety Standards | ${siteConfig.name}`,
+    description: `Child safety standards and child protection protocols for applications by ${siteConfig.name}.`,
+    url: "/child-safety-standards",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Child Safety Standards | ${siteConfig.name}`,
+    description: `Child safety standards and child protection protocols for applications by ${siteConfig.name}.`,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function ChildSafetyStandardsPage({ searchParams }: PageProps) {

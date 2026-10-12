@@ -23,17 +23,42 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: {
-    absolute: `Web, Mobile App & Software Development Company | ${siteConfig.name}`,
+    absolute: `Custom Web & Mobile App Development Company | ${siteConfig.name}`,
   },
   description:
-    "Hire Neural IT Limited to build, fix or rescue a website, web app or mobile app. Senior development team serving clients in Europe, Asia and the Middle East, with a written scope and fixed quote.",
+    "Hire Neural IT Limited to build custom websites, iOS & Android mobile apps, and business software. Expert Next.js, React, Flutter, and Laravel developers with a written scope and fixed quote.",
+  keywords: [
+    "hire website developer",
+    "create custom website",
+    "build mobile app",
+    "hire mobile app developer",
+    "custom web development company",
+    "mobile app development services",
+    "Flutter app developers",
+    "React Native mobile app development",
+    "Next.js web development agency",
+    "hire full stack developer",
+    "ecommerce website development",
+    "fix broken website",
+    "website and app repair",
+    "custom software development company",
+    "SaaS application development",
+    "MVP development for startups",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
-    title: `Web, Mobile App & Software Development Company | ${siteConfig.name}`,
+    title: `Custom Web & Mobile App Development Company | ${siteConfig.name}`,
     description:
-      "Website, app and custom software development and repair for businesses in Europe, Asia and the Middle East. GDPR-aware builds, Arabic RTL support, and fixed quotes.",
+      "Hire senior developers to build or repair your website, mobile app, or software product. Fast Next.js, Flutter, React, and Laravel engineering with fixed quotes.",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Custom Web & Mobile App Development Company | ${siteConfig.name}`,
+    description:
+      "Hire expert developers to create custom websites, mobile apps, and business software with fixed pricing.",
     images: ["/og-image.png"],
   },
 };

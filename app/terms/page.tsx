@@ -8,9 +8,23 @@ import { siteConfig } from "@/lib/site-config";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: `Terms of Service | ${siteConfig.name}`,
   description: `Terms of service for ${siteConfig.name}. Read the conditions governing your use of our website and engagement of our development and repair services.`,
+  keywords: ["terms of service", "client agreement", "Neural IT Limited terms", "development contracts"],
   alternates: { canonical: "/terms" },
+  openGraph: {
+    title: `Terms of Service | ${siteConfig.name}`,
+    description: `Terms of service and client engagement standards for ${siteConfig.name}.`,
+    url: "/terms",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Terms of Service | ${siteConfig.name}`,
+    description: `Terms of service and client engagement standards for ${siteConfig.name}.`,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function TermsPage() {

@@ -10,15 +10,36 @@ import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Services — Web, App & Software Development",
-  description: `Web, mobile and software development services by ${siteConfig.name}. Custom websites, app repair, ecommerce, SaaS and AI automation for businesses in Europe, Asia and the Middle East.`,
+  title: `Web & Mobile App Development Services | ${siteConfig.name}`,
+  description: `Professional web development, mobile app development, website repair, custom software and AI automation by ${siteConfig.name}. Build custom websites and apps with a fixed quote.`,
+  keywords: [
+    "web development services",
+    "mobile app development services",
+    "create custom website",
+    "build mobile app",
+    "hire website developer",
+    "hire mobile app developer",
+    "website repair and bug fixing",
+    "custom software development",
+    "ecommerce website development",
+    "AI automation services",
+    "Next.js web agency",
+    "Flutter app development",
+  ],
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Services | Web, Mobile & AI Development",
+    title: `Web & Mobile App Development Services | ${siteConfig.name}`,
     description:
-      "Custom websites, mobile apps, ecommerce, SaaS, custom software and AI automation by Neural IT Limited.",
+      "Custom websites, iOS & Android mobile apps, ecommerce, SaaS, custom software and AI automation by Neural IT Limited.",
     url: "/services",
     type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Web & Mobile App Development Services | ${siteConfig.name}`,
+    description:
+      "Custom websites, iOS & Android mobile apps, ecommerce, SaaS, custom software and AI automation by Neural IT Limited.",
     images: ["/og-image.png"],
   },
 };

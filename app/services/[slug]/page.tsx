@@ -21,9 +21,21 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: { absolute: `${service.metaTitle} | ${siteConfig.name}` },
     description: service.metaDescription,
+    keywords: service.keywords,
     alternates: { canonical: url },
-    openGraph: { type: "website", url, title: service.metaTitle, description: service.metaDescription, images: ["/og-image.png"] },
-    twitter: { card: "summary_large_image", title: service.metaTitle, description: service.metaDescription, images: ["/og-image.png"] },
+    openGraph: {
+      type: "website",
+      url,
+      title: `${service.metaTitle} | ${siteConfig.name}`,
+      description: service.metaDescription,
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.metaTitle} | ${siteConfig.name}`,
+      description: service.metaDescription,
+      images: ["/og-image.png"],
+    },
   };
 }
 

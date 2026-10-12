@@ -42,9 +42,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = formatProjectDescription(project.description);
   const image = splitList(project.images)[0] || "/og-image.png";
   const url = `/projects/${getProjectSlug(project)}`;
+  const technologies = splitList(project.category);
   return {
     title: { absolute: `${title} Project Case Study | ${siteConfig.name}` },
     description: description.slice(0, 160),
+    keywords: [
+      title,
+      ...technologies,
+      "case study",
+      "web development project",
+      "mobile app development example",
+      "software portfolio",
+    ],
     alternates: { canonical: url },
     openGraph: { type: "website", url, title: `${title} project case study`, description, images: [image] },
     twitter: { card: "summary_large_image", title: `${title} project case study`, description, images: [image] },

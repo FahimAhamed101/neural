@@ -10,10 +10,35 @@ import { siteConfig } from "@/lib/site-config";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Website and App Development & Repair Guides",
-  description: "Practical guides for fixing, redesigning, planning, and developing websites, web apps, mobile apps, ecommerce stores, and business software.",
+  title: `Web & App Development Guides — Insights & Advice | ${siteConfig.name}`,
+  description:
+    "Practical guides for building, fixing, redesigning, and scaling websites, web apps, mobile apps, ecommerce stores, and business software.",
+  keywords: [
+    "how to build mobile app",
+    "how to create website for business",
+    "website repair guide",
+    "hire developer checklist",
+    "cost of mobile app development",
+    "Next.js web development tutorials",
+    "Flutter vs React Native guide",
+    "custom software development insights",
+  ],
   alternates: { canonical: "/blog" },
-  openGraph: { title: "Website and App Development Guides | Neural IT Limited", description: "Practical guidance for fixing broken websites and planning better websites, apps, ecommerce, and business software.", url: "/blog", type: "website" },
+  openGraph: {
+    title: `Web & App Development Guides | ${siteConfig.name}`,
+    description:
+      "Practical guidance for fixing broken websites and planning better websites, apps, ecommerce, and business software.",
+    url: "/blog",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Web & App Development Guides | ${siteConfig.name}`,
+    description:
+      "Practical guidance for fixing broken websites and planning better websites, apps, ecommerce, and business software.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default async function BlogPage() {

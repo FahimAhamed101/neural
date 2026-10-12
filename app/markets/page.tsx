@@ -8,16 +8,34 @@ import { getCitiesByRegion, marketRegions } from "@/lib/markets";
 import { getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Markets we serve — Europe, Asia and the Middle East",
+  title: `Global Markets — Web & App Development | ${siteConfig.name}`,
   description:
-    "Neural IT Limited builds and repairs websites, web apps and mobile apps for businesses in Europe, Asia and the Middle East. Choose your market to see local payments, languages and data-protection requirements.",
+    "Neural IT Limited builds and repairs websites, web apps and mobile apps for businesses across Europe, Asia and the Middle East with local payments and multilingual support.",
+  keywords: [
+    "hire offshore developers",
+    "remote web development agency",
+    "hire app developers Europe",
+    "website development Dubai",
+    "mobile app development Singapore",
+    "website development London",
+    "custom software development Middle East",
+    "multilingual website development",
+    "Arabic RTL web development",
+  ],
   alternates: { canonical: "/markets" },
   openGraph: {
-    title: "Markets we serve | Europe, Asia and the Middle East",
+    title: `Global Markets — Web & App Development | ${siteConfig.name}`,
     description:
       "Website, app and software development for businesses across Europe, Asia and the Middle East.",
     url: "/markets",
     type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Global Markets — Web & App Development | ${siteConfig.name}`,
+    description:
+      "Website, app and software development for businesses across Europe, Asia and the Middle East.",
     images: ["/og-image.png"],
   },
 };

@@ -17,8 +17,8 @@ export default function Hero() {
             <strong>websites, apps and software</strong>
           </h1>
           <p className="hero-sub">
-            A senior development team for businesses that need a site launched, a broken app
-            repaired, or an unfinished project rescued. You get a written scope, a fixed quote, and
+            Hire a senior development team to create custom websites, build iOS and Android mobile apps,
+            or repair and rescue an existing codebase. You get a written scope, a fixed quote, and
             the engineer actually doing the work — not an account manager relaying messages.
           </p>
           <div className="button-row">
@@ -34,6 +34,19 @@ export default function Hero() {
             <a className="pill pill-outline" href="#enquiry">
               Get a fixed quote <span>↓</span>
             </a>
+          </div>
+          <div className="hero-founder-strip">
+            <img
+              src="/fahim-ahamed.jpg"
+              alt="Fahim Ahamed, Founder & Principal Full-Stack Engineer"
+              className="hero-founder-avatar"
+              width={42}
+              height={42}
+            />
+            <div className="hero-founder-text">
+              <strong>Led by Founder &amp; Principal Engineer Fahim Ahamed</strong>
+              <span>Direct WhatsApp &amp; code access · 6+ yrs experience · Written scope &amp; fixed quotes</span>
+            </div>
           </div>
           <p className="hero-proof">
             Replies in {siteConfig.trust.responseTime} · Clients in{" "}
