@@ -131,6 +131,7 @@ export default function Footer() {
           <Link href="/markets">Markets</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
+          <Link href="/child-safety-standards">Child Safety</Link>
         </div>
       </div>
     </footer>
