@@ -75,6 +75,10 @@
   background: #0c0e0f;
 }
 
+.technology-band .kicker {
+  color: #8b9089;
+}
+
 .technology-band h3 {
   max-width: 480px;
   margin: 0;

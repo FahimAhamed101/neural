@@ -386,7 +386,7 @@
 }
 
 .footer-regions > div > div a {
-  color: #6b6e6b;
+  color: #8b9089;
   font-size: 12px;
 }
 
@@ -398,7 +398,7 @@
 
 .hero-proof {
   margin: 22px 0 0;
-  color: #7a7d79;
+  color: #5c5f5c;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -517,7 +517,7 @@
 }
 
 .market-facts dt {
-  color: #7b7f7b;
+  color: #5c5f5c;
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -748,7 +748,7 @@
 }
 
 .enquiry-field label {
-  color: #6b6e6b;
+  color: #a2a7a2;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -804,7 +804,7 @@
 .enquiry-note {
   grid-column: 1 / -1;
   margin: 0;
-  color: #6b6e6b;
+  color: #a2a7a2;
   font-size: 12px;
   line-height: 1.6;
 }
@@ -1540,7 +1540,7 @@
   display: inline-block;
   font-size: 12px;
   font-weight: 800;
-  color: #799a1f;
+  color: #5a7a16;
   margin-bottom: 12px;
   letter-spacing: 0.08em;
 }
